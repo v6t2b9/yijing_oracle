@@ -1,0 +1,35 @@
+# Umgebungsvariablen
+.env
+
+# Temporäre Dateien
+*.log
+*.tmp
+*.tmp.*
+*.swp
+
+# Dateien und Verzeichnisse, die von IDEs und Texteditoren erstellt werden
+.idea/
+.vscode/
+__pycache__/
+*.swp
+*.swo
+
+# Virtualenv
+venv/
+
+# Byte-compiled Python
+*.pyc
+*.pyo
+
+# Test Coverage reports
+.coverage
+coverage/
+
+# Distribution / Build Verzeichnisse
+build/
+dist/
+
+# Weitere Verzeichnisse
+import/
+export/
+archiv/
