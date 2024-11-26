@@ -33,3 +33,6 @@ dist/
 import/
 export/
 archiv/
+
+# Dateien
+.DS_Store
