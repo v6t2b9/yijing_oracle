@@ -11,12 +11,6 @@ A Python package for I Ching (Yijing) divination and oracle consultation. Provid
 - 🧪 Comprehensive test coverage
 - 📝 Detailed logging and debugging options
 
-## Installation
-
-```bash
-pip install yijing_oracle
-```
-
 ## Quick Start
 
 ```python
