@@ -1,3 +1,4 @@
+# __init__.py
 from .models import (
     Hypergram,
     HypergramData, 
@@ -7,7 +8,7 @@ from .models import (
 )
 
 from .hypergram import cast_hypergram
-from .oracle import YijingOracle, OracleSettings
+from .oracle import YijingOracle, OracleSettings, ask_oracle  # Hauptklassen aus oracle.py
 
 __version__ = "0.1.0"
 __author__ = "Your Name"
@@ -21,5 +22,6 @@ __all__ = [
     "HexagramLine",
     "cast_hypergram",
     "YijingOracle",
-    "OracleSettings"
+    "OracleSettings",
+    "ask_oracle"
 ]

@@ -1,4 +1,5 @@
-# main.py
+# projektordner/yijing/oracle.py
+
 from datetime import datetime
 import google.generativeai as genai
 from typing import Optional, Dict, Any
@@ -54,10 +55,7 @@ class YijingOracle:
             genai.configure(api_key=self.api_key)
             self.model = genai.GenerativeModel(
                 self.settings.active_model,
-                generation_config={
-                    "temperature": self.settings.temperature,
-                    "max_output_tokens": self.settings.max_tokens
-                }
+                system_instruction=self.settings.system_prompt
             )
         except Exception as e:
             self.logger.error("GenAI API configuration error", exc_info=True)
@@ -103,14 +101,18 @@ class YijingOracle:
             
             # Create the prompt and start chat
             prompt = self._create_prompt(question, hypergram_data)
-            chat = self.model.start_chat(context=self.settings.system_prompt)
-            response = chat.send_message(prompt)
+            chat = self.model.start_chat()
+            response = chat.send_message(
+                prompt,
+                #temperature=self.settings.temperature,
+                #max_output_tokens=self.settings.max_tokens
+            )
             
-            if not response or not response.text:
+            if not response or not hasattr(response, 'parts') or len(response.parts) == 0:
                 raise ValueError("No valid response received")
                 
             return {
-                'answer': response.text,
+                'answer': response.parts[0].text,
                 'hypergram_data': hypergram_data.dict(),
                 'model_used': self.settings.active_model,
                 'timestamp': datetime.now().isoformat()
@@ -131,7 +133,8 @@ Hexagram Information:
 
 Please interpret the hexagrams and answer the question."""
 
-def ask_oracle(question: str) -> Dict[str, Any]:
+# Helper function for easy usage
+def ask_oracle(question: str, api_key: str = os.getenv("GENAI_API_KEY")) -> Dict[str, Any]:
     """Convenience function to get oracle response"""
-    oracle = YijingOracle()
+    oracle = YijingOracle(api_key=api_key)
     return oracle.get_response(question)
