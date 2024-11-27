@@ -14,11 +14,8 @@ from .hypergram import cast_hypergram
 @dataclass
 class OracleSettings:
     """Settings for the Yijing Oracle"""
-    active_model: str
-    system_prompt: str
-    debug: bool
-    temperature: float
-    max_tokens: int
+    system_prompt: str = "Du bist ein weiser I-Ging Berater..."
+    active_model: str = "models/gemini-1.5-flash"  # Aktualisiert auf das neue Modell
     
     @classmethod
     def from_json(cls, path: Path) -> 'OracleSettings':
@@ -54,13 +51,13 @@ class YijingOracle:
         try:
             genai.configure(api_key=self.api_key)
             self.model = genai.GenerativeModel(
-                self.settings.active_model,
+                model_name="models/gemini-1.5-flash",  # Aktualisiert auf das neueste Modell
                 system_instruction=self.settings.system_prompt
             )
         except Exception as e:
             self.logger.error("GenAI API configuration error", exc_info=True)
             raise RuntimeError(f"API configuration error: {e}")
-
+    
     def _setup_logging(self) -> None:
         """Configure logging"""
         handler = logging.StreamHandler()
@@ -69,8 +66,8 @@ class YijingOracle:
         )
         handler.setFormatter(formatter)
         self.logger.addHandler(handler)
-        self.logger.setLevel(logging.DEBUG if self.settings.debug else logging.INFO)
-
+        self.logger.setLevel(logging.INFO)
+    
     def _load_settings(
         self, 
         settings_path: Optional[Path],
@@ -80,9 +77,6 @@ class YijingOracle:
         default_settings = {
             "active_model": "gemini-1.5-pro",
             "system_prompt": "Yijing Oracle Advisor",
-            "debug": True,
-            "temperature": 0.9,
-            "max_tokens": 1024
         }
 
         if settings_path and settings_path.exists():
@@ -99,20 +93,15 @@ class YijingOracle:
             
             hypergram_data = cast_hypergram()
             
-            # Create the prompt and start chat
+            # Create the prompt and generate response
             prompt = self._create_prompt(question, hypergram_data)
-            chat = self.model.start_chat()
-            response = chat.send_message(
-                prompt,
-                #temperature=self.settings.temperature,
-                #max_output_tokens=self.settings.max_tokens
-            )
+            response = self.model.generate_content(prompt)
             
-            if not response or not hasattr(response, 'parts') or len(response.parts) == 0:
+            if not response or not hasattr(response, 'text'):
                 raise ValueError("No valid response received")
                 
             return {
-                'answer': response.parts[0].text,
+                'answer': response.text,
                 'hypergram_data': hypergram_data.dict(),
                 'model_used': self.settings.active_model,
                 'timestamp': datetime.now().isoformat()
