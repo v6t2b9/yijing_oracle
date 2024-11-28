@@ -1,45 +1,55 @@
 # yijing_oracle
 
-A Python package for I Ching (Yijing) divination and oracle consultation. Provides tools for casting hexagrams, interpreting changes, and receiving AI-powered guidance based on traditional I Ching wisdom.
+A Python package for I Ching (Yijing) divination and oracle consultation using Generative AI. Provides automated hexagram casting, interpretation of changes, and AI-powered guidance based on traditional I Ching wisdom.
 
 ## Features
 
-- 🎲 Automated hexagram casting using traditional methods
-- 🔄 Tracking of changing lines and transformations
-- 🤖 AI-powered interpretations using Google's Generative AI
-- 📊 Clean, type-hinted API with Pydantic models
-- 🧪 Comprehensive test coverage
-- 📝 Detailed logging and debugging options
+- Automated hexagram casting with changing lines tracking
+- AI-powered interpretations using Google's Generative AI
+- Support for both single-response and dialogue consultation modes
+- Type-safe implementation with Pydantic models
+- Detailed logging and debugging capabilities
+- Configurable system prompts and consultation styles
+
+## Installation
+
+```bash
+pip install yijing-oracle
+```
 
 ## Quick Start
 
 ```python
 from yijing_oracle import ask_oracle
 
-# Simple usage
+# Simple usage with environment variable GENAI_API_KEY
 response = ask_oracle("What should I focus on today?")
 print(response['answer'])
 
-# Advanced usage
-from yijing_oracle import YijingOracle, OracleSettings
+# Advanced usage with explicit configuration
+from yijing_oracle import YijingOracle, ConsultationMode
 
 oracle = YijingOracle(
+    api_key="your-api-key",
     custom_settings={
-        "temperature": 0.8,
-        "max_tokens": 2048
+        "active_model": "models/gemini-1.5-flash",
+        "consultation_mode": ConsultationMode.DIALOGUE
     }
 )
+
+# Start a dialogue consultation
+oracle.start_new_consultation()
 response = oracle.get_response("Should I take this opportunity?")
 ```
 
 ## Configuration
 
-The oracle can be configured using either:
+Configure the oracle via:
 - Environment variables
-- A JSON configuration file
 - Direct parameter passing
+- JSON configuration file
 
-Required environment variable:
+Required:
 - `GENAI_API_KEY`: Your Google Generative AI API key
 
 ## Requirements
@@ -47,43 +57,33 @@ Required environment variable:
 - Python 3.8+
 - google-generativeai
 - pydantic
+- pydantic-settings
 
 ## License
 
-This project is licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
+CC BY-NC 4.0 (Creative Commons Attribution-NonCommercial 4.0 International)
 
-### You are free to:
-- Share — copy and redistribute the material in any medium or format
-- Adapt — remix, transform, and build upon the material
+### Terms:
+- Share and adapt the material freely
+- Provide attribution
+- Non-commercial use only
 
-### Under the following terms:
-- Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made
-- NonCommercial — You may not use the material for commercial purposes
-- No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits
-
-[View the full license](https://creativecommons.org/licenses/by-nc/4.0/)
+[Full License](https://creativecommons.org/licenses/by-nc/4.0/)
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1. Fork the repository
+2. Create a feature branch
+3. Commit changes
+4. Push to branch
+5. Create Pull Request
 
 ## Support
 
-If you encounter any problems or have questions, please:
-1. Check the [documentation](docs/)
-2. Look through existing [issues](issues/)
-3. Open a new issue if needed
-
-## Acknowledgments
-
-This project takes inspiration from traditional I Ching divination methods and combines them with modern AI technology. Special thanks to the open source community and contributors.
+1. Check documentation in `docs/`
+2. Review existing issues
+3. Open new issue if needed
 
 ---
 
-Created with ❤️ for the I Ching community
+Created for the I Ching community
