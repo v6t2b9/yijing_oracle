@@ -11,6 +11,7 @@
 | |______init__.py
 | |____utils.py
 | |____oracle.py
+| |____settings.py
 |____README.md
 |____.gitignore
 |____.env

@@ -14,7 +14,7 @@ from .hypergram import cast_hypergram
 from .utils import load_yijing_text, load_system_prompt  # Importiere die benötigten Funktionen
 from enum import Enum, auto
 from .enums import ConsultationMode
-
+from .settings import settings
 
 # yijing/oracle.py
 
@@ -61,11 +61,11 @@ class YijingOracle:
     ):
         """Initialize Yijing Oracle with support for both single and dialogue modes"""
         self.settings = self._load_settings(settings_path, custom_settings)
-        self.logger = logging.getLogger(__name__)
+        self.logger = self._setup_logging()
         self._setup_logging()
         
         # API Key Setup
-        self.api_key = api_key or os.getenv("GENAI_API_KEY")
+        self.api_key = api_key or os.getenv("API_KEY")
         if not self.api_key:
             raise ValueError(
                 "API key not found. Please provide via parameter or "
@@ -74,18 +74,29 @@ class YijingOracle:
 
         # GenAI Setup
         try:
-            genai.configure(api_key=self.api_key)
+            genai.configure(api_key=settings.api_key)
+
+            # Kombiniere System-Prompt mit Yijing-Text
+            system_prompt = f"""{settings.get_system_prompt()}
+
+Yijing Text Referenz:
+{settings.get_yijing_text()}
+"""
+            
+            # Model initialisieren
             self.model = genai.GenerativeModel(
-                model_name=self.settings.active_model,
-                system_instruction=self.settings.system_prompt
+                model_name=settings.model_name,
+                system_instruction=system_prompt
             )
-            # Initialize chat session if in dialogue mode
+            
+            # Chat-Session für Dialog-Modus
             self.chat_session = None
-            if self.settings.consultation_mode == ConsultationMode.DIALOGUE:
+            if settings.consultation_mode == ConsultationMode.DIALOGUE:
                 self.chat_session = self.model.start_chat()
+                
         except Exception as e:
-            self.logger.error("GenAI API configuration error", exc_info=True)
-            raise RuntimeError(f"API configuration error: {e}")
+            self.logger.error("Fehler bei der Initialisierung", exc_info=True)
+            raise RuntimeError(f"Oracle Initialisierungsfehler: {str(e)}")
 
     def get_response(self, question: str) -> Dict[str, Any]:
         """Generate oracle response using either single or dialogue mode"""
@@ -142,15 +153,20 @@ class YijingOracle:
             self.logger.info("Starting new consultation session")
             self.chat_session = self.model.start_chat()
 
-    def _setup_logging(self) -> None:
-        """Configure logging"""
-        handler = logging.StreamHandler()
-        formatter = logging.Formatter(
-            '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-        )
-        handler.setFormatter(formatter)
-        self.logger.addHandler(handler)
-        self.logger.setLevel(logging.INFO)
+    def _setup_logging(self) -> logging.Logger:
+        """Richtet das Logging ein."""
+        logger = logging.getLogger(__name__)
+        if not logger.handlers:  # Verhindere doppelte Handler
+            handler = logging.StreamHandler()
+            formatter = logging.Formatter(
+                '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+            )
+            handler.setFormatter(formatter)
+            logger.addHandler(handler)
+            logger.setLevel(
+                logging.DEBUG if settings.debug else logging.INFO
+            )
+        return logger
     
     def _load_settings(
         self, 

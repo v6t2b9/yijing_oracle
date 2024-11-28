@@ -1,4 +1,6 @@
-# __init__.py
+# yijing/__init__.py
+
+from .settings import settings
 from .models import (
     Hypergram,
     HypergramData, 
@@ -6,28 +8,19 @@ from .models import (
     Hexagram,
     HexagramLine
 )
-
-from .hypergram import cast_hypergram
-
-from .utils import load_yijing_text
-
+from .oracle import YijingOracle
 from .enums import ConsultationMode
-from .oracle import YijingOracle, OracleSettings, ask_oracle
 
 __version__ = "0.0.1"
 __author__ = "JayKay"
-__author_email__ = "xxx"
 
 __all__ = [
+    "settings",
+    "YijingOracle",
     "Hypergram",
     "HypergramData",
     "HypergramLine", 
     "Hexagram",
     "HexagramLine",
-    "cast_hypergram",
-    "YijingOracle",
-    "OracleSettings",
-    "ask_oracle",
-    "load_yijing_text",
     "ConsultationMode"
 ]
