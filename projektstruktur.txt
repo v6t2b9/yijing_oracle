@@ -1,0 +1,16 @@
+|____01_claude_yijing_v0.ipynb
+|____yijing
+| |____config.py
+| |____hypergram.py
+| |____models.py
+| |____resources
+| | |____dialogue_system_prompt.txt
+| | |____yijing.txt
+| | |____single_system_prompt.txt
+| |______init__.py
+| |____utils.py
+| |____oracle.py
+|____README.md
+|____.gitignore
+|____.env
+|____projektstruktur.txt
