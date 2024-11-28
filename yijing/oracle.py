@@ -20,10 +20,23 @@ class ConsultationMode(str, Enum):
 @dataclass
 class OracleSettings:
     """Settings for the Yijing Oracle"""
-    system_prompt: str = "Du bist ein weiser I-Ging Berater..."
-    active_model: str = "models/gemini-1.5-flash"  # Aktualisiert auf das neue Modell
-    consultation_mode: ConsultationMode = ConsultationMode.SINGLE  # Default to single-response mode
-    
+    system_prompt: str = "Du bist ein einfühlsames und weises I-Ging-Orakel..."
+    yijing_text: Optional[str] = None
+    active_model: str = "models/gemini-1.5-flash"
+    consultation_mode: ConsultationMode = ConsultationMode.SINGLE
+
+    def __post_init__(self):
+        """Load Yijing text if not provided and combine with system prompt"""
+        if self.yijing_text is None:
+            self.yijing_text = load_yijing_text()
+        
+        # Combine system prompt with Yijing text
+        self.system_prompt = f"""{self.system_prompt}
+
+Yijing Text Referenz:
+{self.yijing_text}
+"""
+        
     @classmethod
     def from_json(cls, path: Path) -> 'OracleSettings':
         """Load settings from JSON file"""
