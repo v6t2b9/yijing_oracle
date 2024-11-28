@@ -1,4 +1,5 @@
 # projektordner/yijing/oracle.py
+# projektordner/yijing/oracle.py
 
 from datetime import datetime
 import google.generativeai as genai
@@ -10,23 +11,28 @@ import logging
 import os
 from .models import HypergramData
 from .hypergram import cast_hypergram
+from .utils import load_yijing_text, load_system_prompt  # Importiere die benötigten Funktionen
 from enum import Enum, auto
+from .enums import ConsultationMode
 
-class ConsultationMode(str, Enum):
-    """Defines how the oracle interacts with the model"""
-    SINGLE = "single"     # Uses generate_content for independent readings
-    DIALOGUE = "dialogue" # Uses chat for continuous conversation
+
+# yijing/oracle.py
 
 @dataclass
 class OracleSettings:
     """Settings for the Yijing Oracle"""
-    system_prompt: str = "Du bist ein einfühlsames und weises I-Ging-Orakel..."
+    system_prompt: Optional[str] = None
     yijing_text: Optional[str] = None
     active_model: str = "models/gemini-1.5-flash"
     consultation_mode: ConsultationMode = ConsultationMode.SINGLE
 
     def __post_init__(self):
-        """Load Yijing text if not provided and combine with system prompt"""
+        """Load appropriate system prompt and Yijing text if not provided"""
+        # Load the mode-specific system prompt if not provided
+        if self.system_prompt is None:
+            self.system_prompt = load_system_prompt(self.consultation_mode)
+        
+        # Load Yijing text if not provided
         if self.yijing_text is None:
             self.yijing_text = load_yijing_text()
         
@@ -36,7 +42,7 @@ class OracleSettings:
 Yijing Text Referenz:
 {self.yijing_text}
 """
-        
+    
     @classmethod
     def from_json(cls, path: Path) -> 'OracleSettings':
         """Load settings from JSON file"""
@@ -135,40 +141,7 @@ class YijingOracle:
         if self.settings.consultation_mode == ConsultationMode.DIALOGUE:
             self.logger.info("Starting new consultation session")
             self.chat_session = self.model.start_chat()
-    '''
-    def __init__(
-        self, 
-        api_key: Optional[str] = None,
-        settings_path: Optional[Path] = None,
-        custom_settings: Optional[Dict[str, Any]] = None
-    ):
-        """Initialize Yijing Oracle"""
-        # First load settings as they're needed by other initialization steps
-        self.settings = self._load_settings(settings_path, custom_settings)
-        
-        # Then set up logging with the loaded settings
-        self.logger = logging.getLogger(__name__)
-        self._setup_logging()
-        
-        # API Key Setup
-        self.api_key = api_key or os.getenv("GENAI_API_KEY")
-        if not self.api_key:
-            raise ValueError(
-                "API key not found. Please provide via parameter or "
-                "environment variable 'GENAI_API_KEY'."
-            )
 
-        # GenAI Setup
-        try:
-            genai.configure(api_key=self.api_key)
-            self.model = genai.GenerativeModel(
-                model_name="models/gemini-1.5-flash",  # Aktualisiert auf das neueste Modell
-                system_instruction=self.settings.system_prompt
-            )
-        except Exception as e:
-            self.logger.error("GenAI API configuration error", exc_info=True)
-            raise RuntimeError(f"API configuration error: {e}")
-    '''
     def _setup_logging(self) -> None:
         """Configure logging"""
         handler = logging.StreamHandler()
@@ -196,31 +169,6 @@ class YijingOracle:
             return OracleSettings(**{**default_settings, **custom_settings})
         else:
             return OracleSettings(**default_settings)
-
-    def get_response(self, question: str) -> Dict[str, Any]:
-        """Generate oracle response for given question"""
-        try:
-            self.logger.info(f"Processing question: {question}")
-            
-            hypergram_data = cast_hypergram()
-            
-            # Create the prompt and generate response
-            prompt = self._create_prompt(question, hypergram_data)
-            response = self.model.generate_content(prompt)
-            
-            if not response or not hasattr(response, 'text'):
-                raise ValueError("No valid response received")
-                
-            return {
-                'answer': response.text,
-                'hypergram_data': hypergram_data.dict(),
-                'model_used': self.settings.active_model,
-                'timestamp': datetime.now().isoformat()
-            }
-            
-        except Exception as e:
-            self.logger.error("Error generating response", exc_info=True)
-            raise RuntimeError(f"Oracle error: {str(e)}")
 
     def _create_prompt(self, question: str, hypergram_data: HypergramData) -> str:
         """Create model prompt"""

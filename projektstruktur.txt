@@ -1,6 +1,7 @@
 |____01_claude_yijing_v0.ipynb
 |____yijing
 | |____config.py
+| |____enums.py
 | |____hypergram.py
 | |____models.py
 | |____resources
