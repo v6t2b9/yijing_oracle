@@ -32,33 +32,20 @@ Example:
 import logging
 from pydantic import BaseModel, Field, field_validator, computed_field
 from typing import List, Literal, Optional, Dict
-from enum import Enum
+from .enums import LineType  # Import LineType from enums
+from .constants import (
+    LINE_TYPE_MAPPING,
+    TRANSFORMATION_VALUES,
+    YIN_SYMBOL,
+    YANG_SYMBOL,
+    HEXAGRAM_LINE_COUNT,
+    MAX_BINARY_VALUE
+)
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-class LineType(str, Enum):
-    """
-    Enumeration of possible line types in the Yijing system.
-
-    Each line in the Yijing can be one of four types, represented by different numerical values:
-    
-    Attributes:
-        CHANGING_YIN (str): A changing yin line (value 6)
-        STABLE_YANG (str): A stable yang line (value 7)
-        STABLE_YIN (str): A stable yin line (value 8)
-        CHANGING_YANG (str): A changing yang line (value 9)
-    
-    Example:
-        >>> line_type = LineType.CHANGING_YIN
-        >>> print(line_type)
-        'changing_yin'
-    """
-    CHANGING_YIN = "changing_yin"   # Value 6
-    STABLE_YANG = "stable_yang"     # Value 7
-    STABLE_YIN = "stable_yin"       # Value 8
-    CHANGING_YANG = "changing_yang" # Value 9
 
 class HypergramLine(BaseModel):
     """
@@ -94,31 +81,12 @@ class HypergramLine(BaseModel):
         >>> line.transforms_to()
         1
     """
-    value: Literal[6, 7, 8, 9] = Field(
-        ...,
-        description="The numerical value of the line (6: changing yin, 7: stable yang, 8: stable yin, 9: changing yang)"
-    )
-
+    value: Literal[6, 7, 8, 9]
+    
     @computed_field
     def line_type(self) -> LineType:
-        """
-        Compute the line type from the numerical value.
-
-        Returns:
-            LineType: The corresponding line type enum value
-
-        Example:
-            >>> line = HypergramLine(value=6)
-            >>> line.line_type
-            LineType.CHANGING_YIN
-        """
-        value_to_type = {
-            6: LineType.CHANGING_YIN,
-            7: LineType.STABLE_YANG,
-            8: LineType.STABLE_YIN,
-            9: LineType.CHANGING_YANG
-        }
-        return value_to_type[self.value]
+        """Get the line type from the numerical value."""
+        return LineType(LINE_TYPE_MAPPING[self.value])
 
     def is_yin(self) -> bool:
         """
