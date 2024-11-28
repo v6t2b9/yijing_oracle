@@ -1,51 +1,60 @@
 # yijing/settings.py
 
 from pydantic_settings import BaseSettings
-from pydantic import Field, field_validator
+from pydantic import Field, field_validator, DirectoryPath
 from typing import Optional
 from pathlib import Path
-from .enums import ConsultationMode
+from .enums import ConsultationMode, LogLevel
+from .constants import DEFAULT_MODEL
 
 class Settings(BaseSettings):
-    """Zentrale Konfiguration für das Yijing Oracle System.
-    
-    Diese Klasse nutzt Pydantic für:
-    - Automatische Umgebungsvariablen-Validierung
-    - Typsicherheit
-    - Automatisches Environment-Loading
-    """
-    
-    # Erforderliche Einstellungen
+    """Zentrale Konfiguration für das Yijing Oracle System."""
+
+    model_config = {
+        'protected_namespaces': ('settings_',),
+        'env_file': '.env',
+        'env_file_encoding': 'utf-8',
+        'case_sensitive': False
+    }
+
+    # API Configuration
     api_key: str = Field(
         default=None,
         env='GENAI_API_KEY',
         description='Google Generative AI API Key'
     )
-    
-    # Optionale Einstellungen mit sinnvollen Defaults
+
+    # Model Configuration
     model_name: str = Field(
-        default="models/gemini-1.5-flash",
-        description='Name des zu verwendenden KI-Modells'
+        default=DEFAULT_MODEL,
+        description='Name of the AI model to use'
     )
+
+    # Logging Configuration
+    log_level: LogLevel = Field(
+        default=LogLevel.INFO,
+        env='LOG_LEVEL',
+        description='Logging level for the application'
+    )
+
+    # Consultation Configuration
     consultation_mode: ConsultationMode = Field(
         default=ConsultationMode.SINGLE,
-        description='Beratungsmodus (single/dialogue)'
+        description='Consultation mode (single/dialogue)'
     )
+
+    # Resource Configuration
+    resources_dir: DirectoryPath = Field(
+        default=Path(__file__).parent / 'resources',
+        description='Directory containing resource files'
+    )
+
+    # Debug Configuration
     debug: bool = Field(
         default=False,
-        description='Debug-Modus aktivieren'
+        env='DEBUG',
+        description='Enable debug mode'
     )
-
-    # Ressourcen-Management
-    resources_dir: Path = Field(
-        default=Path(__file__).parent / 'resources',
-        description='Verzeichnis für Ressourcendateien'
-    )
-
-    class Config:
-        env_file = '.env'
-        env_file_encoding = 'utf-8'
-        case_sensitive = False
 
     def get_system_prompt(self) -> str:
         """Lädt den System-Prompt basierend auf dem Beratungsmodus."""
@@ -75,7 +84,6 @@ class Settings(BaseSettings):
                 "Sie den Key direkt."
             )
         return v
-    
 
 # Singleton-Instanz der Konfiguration
 settings = Settings()

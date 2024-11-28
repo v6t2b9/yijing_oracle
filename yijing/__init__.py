@@ -8,7 +8,7 @@ from .constants import (
     CHANGING_YANG
 )
 
-# Then import enums
+# First, import enums
 from .enums import (
     ConsultationMode,
     LineType,
