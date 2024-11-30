@@ -1,0 +1,67 @@
+{
+  "hexagram": {
+    "name": "GUAI / DER DURCHBRUCH",
+    "subtitle": "Die Entschlossenheit",
+    "trigrams": {
+      "above": {
+        "name": "Dui",
+        "attributes": "das Heitere, der See"
+      },
+      "below": {
+        "name": "Kien",
+        "attributes": "das Schöpferische, der Himmel"
+      }
+    },
+    "meaning": {
+      "description": "Das Zeichen bedeutet einerseits einen Durchbruch nach lange angesammelter Spannung, wie den Durchbruch eines geschwellten Flusses durch seine Dämme, wie einen Wolkenbruch. Auf menschliche Verhältnisse übertragen, ist es andererseits die Zeit, da allmählich die Gemeinen im Schwinden sind. Ihr Einfluß ist im Abnehmen, und durch eine entschlossene Aktion kommt eine Änderung der Verhältnisse zum Durchbruch.",
+      "season": "dritter Monat (April-Mai)"
+    }
+  },
+  "judgment": {
+    "description": "Der Durchbruch. Entschlossen muß man am Hof des Königs die Sache bekanntmachen. Der Wahrheit gemäß muß sie verkündet werden. Gefahr! Man muß seine eigene Stadt benachrichtigen. Nicht fördernd ist es, zu den Waffen zu greifen. Fördernd ist es, etwas zu unternehmen.",
+    "analysis": [
+      "Leidenschaft und Vernunft können nicht zusammen bestehen, daher ist ein unbedingter Kampf notwendig.",
+      "Entschlossenheit muß auf Stärke und Freundlichkeit beruhen.",
+      "Kompromisse mit dem Schlechten sind nicht möglich.",
+      "Der Kampf darf nicht direkt durch Gewalt geführt werden.",
+      "Der Edle beginnt bei sich selbst, um das Böse zu entwaffnen."
+    ]
+  },
+  "image": {
+    "description": "Der See ist an den Himmel emporgestiegen: das Bild des Durchbruchs.",
+    "lesson": "Der Edle spendet Reichtum nach unten hin und scheut es, bei seiner Tugend zu verweilen.",
+    "warning": "Sammeln führt zu Zerstreuen; rechtzeitige Vorbereitung kann einem gewaltsamen Zusammenbruch vorbeugen."
+  },
+  "lines": [
+    {
+      "position": "Anfangs eine",
+      "text": "Mächtig in den vorwärtsschreitenden Zehen. Geht man hin und ist der Sache nicht gewachsen, so macht man einen Fehler.",
+      "interpretation": "Zu Beginn ist entschlossenes Voranschreiten schwierig. Blindes Draufgängertum führt zu unheilvollen Folgen."
+    },
+    {
+      "position": "Neun auf zweitem Platz",
+      "text": "Alarmruf. Abends und nachts Waffen. Fürchte nichts.",
+      "interpretation": "Vorsicht und Wachsamkeit schützen vor Gefahren. Besonnenheit ist der rechte Weg zur Sicherheit."
+    },
+    {
+      "position": "Neun auf drittem Platz",
+      "text": "Mächtig in den Backenknochen zu sein bringt Unheil.",
+      "interpretation": "Entschlossenheit ist notwendig, aber äußere Stärke zur falschen Zeit kann die Lage verschlimmern."
+    },
+    {
+      "position": "Neun auf viertem Platz",
+      "text": "An den Oberschenkeln ist keine Haut, und das Gehen fällt schwer.",
+      "interpretation": "Eigensinn führt zu Konflikten. Würde man Ratschläge annehmen, könnte alles gutgehen."
+    },
+    {
+      "position": "Neun auf fünftem Platz",
+      "text": "Dem Unkraut gegenüber braucht es feste Entschlossenheit.",
+      "interpretation": "Hindernisse müssen mit Entschlossenheit überwunden werden, ohne vom Weg abzukommen."
+    },
+    {
+      "position": "Oben eine Sechs",
+      "text": "Kein Ruf! Schließlich kommt Unheil.",
+      "interpretation": "Nachlässigkeit beim Entfernen des Bösen führt zu erneutem Übel. Gründliche Arbeit ist notwendig."
+    }
+  ]
+}
