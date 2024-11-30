@@ -1,0 +1,67 @@
+{
+    "hexagram": {
+        "name": "SUNG / DER STREIT",
+        "subtitle": "Keine Information verfügbar",
+        "trigrams": {
+            "above": {
+                "name": "Kien",
+                "attributes": "das Schöpferische, der Himmel"
+            },
+            "below": {
+                "name": "Kan",
+                "attributes": "das Abgründige, das Wasser"
+            }
+        },
+        "meaning": {
+            "description": "Die Bewegungsrichtungen der beiden Hälften gehen auseinander, das ergibt den Gedanken des Streites. Die Eigenschaft des Schöpferischen ist die Stärke, die des Abgründigen die Gefahr, Hinterlist. Wo List Gewalt vor sich hat, da gibt es Streit. Ein derartiger Charakter wird sicher streitsüchtig sein.",
+            "season": "Keine Information verfügbar"
+        }
+    },
+    "judgment": {
+        "description": "Der Streit: Du bist wahrhaftig und wirst gehemmt. Sorgliches Innehalten auf halbem Weg bringt Heil. Zu Ende führen bringt Unheil. Fördernd ist es, den großen Mann zu sehen. Nicht fördernd ist es, das große Wasser zu durchqueren.",
+        "analysis": [
+            "Streit entsteht, wenn man im Gefühl seines Rechts auf Widerstand stößt.",
+            "Machtvolle Besonnenheit, die jederzeit zur Beilegung des Streites und zum Vergleich auf halbem Weg bereit ist, ist heilbringend.",
+            "Ein Verfolgen des Streites bis zum bitteren Ende ist vom Übel, weil man dadurch die Feindschaft verewigt.",
+            "Es ist wichtig, einen unparteiischen Mann zu sehen, dessen Autorität hinreicht, um den Streit friedlich beizulegen oder gerecht zu entscheiden.",
+            "Es ist zu vermeiden, in Zeiten des Unfriedens gefahrvolle Unternehmungen zu beginnen."
+        ]
+    },
+    "image": {
+        "description": "Himmel und Wasser gehen einander entgegengesetzt: das Bild des Streites.",
+        "lesson": "Der Edle überlegt bei allen Geschäften, die er tut, den Anfang.",
+        "warning": "Wenn Recht und Pflicht nicht genau festgelegt sind, oder wenn bei einer Verbindung von Menschen deren geistige Richtungen nicht zusammengehen, so ist die Ursache des Streits gegeben."
+    },
+    "lines": [
+        {
+            "position": "Anfangs eine Sechs",
+            "text": "Wenn man die Sache nicht verewigt, so gibt es ein kleines Gerede. Am Ende kommt Heil.",
+            "interpretation": "Solange der Streit noch im Anfang ist, tut man am besten, ihn fallen zu lassen. Es kommt dabei vielleicht zu einem kleinen Wortwechsel, aber am Ende geht alles gut."
+        },
+        {
+            "position": "Neun auf zweitem Platz",
+            "text": "Man kann nicht streiten, kehrt heim und weicht aus. Die Menschen seiner Stadt, dreihundert Häuser, bleiben frei von Schuld.",
+            "interpretation": "Im Kampf mit einem überlegenen Gegner ist Rückzug keine Schande.  Eine weise Nachgiebigkeit kommt der ganzen Umgebung zugute."
+        },
+        {
+            "position": "Sechs auf drittem Platz",
+            "text": "Von alter Tugend sich nähren, gibt Beharrlichkeit. Gefahr, am Ende kommt Heil. Folgst du etwa eines Königs Diensten, so suche nicht Werke.",
+            "interpretation": "Nur was durch frühere Verdienste ehrlich verdient ist, bleibt dauernder Besitz. Wenn man in die Dienste eines Höheren tritt, so kann man den Streit nur dadurch vermeiden, daß man keine Werke für sich sucht."
+        },
+        {
+            "position": "Neun auf viertem Platz",
+            "text": "Man kann nicht streiten, kehrt um und fügt sich dem Geschick, ändert sich und findet Frieden in Beharrlichkeit. Heil !",
+            "interpretation": "Man fühlt sich in seiner Lage nicht wohl, kann aber nicht streiten, weil man nicht die innere Berechtigung dazu findet. Darum kehrt man um und fügt sich in sein Geschick. Man ändert seinen Sinn und findet so dauernden Frieden."
+        },
+        {
+            "position": "Neun auf fünftem Platz",
+            "text": "Streiten vor ihm bringt erhabenes Heil.",
+            "interpretation": "Hier ist der Schlichter des Streits gezeigt. Ihm kann man eine Streitsache getrost überweisen."
+        },
+        {
+            "position": "Oben eine Neun",
+            "text": "Wenn einem etwa auch ein Ledergürtel verliehen wird, am Ende eines Morgens wird er ihm dreimal entrissen.",
+            "interpretation": "Jemand hat den Streit bis zum bitteren Ende geführt und recht behalten. Aber das Glück ist nicht von Dauer. Es wird immer wieder angefochten, und Streit ohne Ende ist die Folge."
+        }
+    ]
+}

@@ -1,0 +1,70 @@
+{
+    "hexagram": {
+        "name": "DA GO / DES GROSSEN ÜBERGEWICHT",
+        "subtitle": "Das Übergewicht des Großen",
+        "trigrams": {
+            "above": {
+                "name": "Dui",
+                "attributes": "das Heitere, der See"
+            },
+            "below": {
+                "name": "Sun",
+                "attributes": "das Sanfte, der Wind"
+            }
+        },
+        "meaning": {
+            "description": "Das Zeichen besteht aus vier starken Strichen im Innern und zwei schwachen Linien außen. Wenn die Starken außen und die Schwachen innen sind, so ist das gut und kein Übergewicht, nichts Außerordentliches liegt vor. Hier ist das Umgekehrte der Fall. Das Zeichen stellt einen Balken dar, der innen dick und schwer, aber an den Enden zu schwach ist. Das ist kein Dauerzustand. Er muß verändert werden, vorübergehen, sonst droht Unheil.",
+            "season": "Keine Information verfügbar"
+        }
+    },
+    "judgment": {
+        "description": "Des Großen Übergewicht. Der Firstbalken biegt sich durch. Fördernd ist es, zu haben, wohin man gehe. Gelingen.",
+        "analysis": [
+            "Die Belastung ist zu groß für die tragenden Kräfte.",
+            "Der Firstbalken, auf dem das ganze Dach ruht, biegt sich durch, weil seine tragenden Enden zu schwach für die Last sind.",
+            "Es ist eine Zeit und Lage, die außerordentlicher Maßregeln bedarf.",
+            "Man muß darauf bedacht sein, möglichst rasch einen Übergang zu finden, zu handeln: das verspricht Erfolg.",
+            "Das Starke ist im Übergewicht, ist es doch in der Mitte, d. h. im inneren Schwerpunkt, so daß keine Revolution zu befürchten ist.",
+            "Mit Gewaltmaßregeln wird nichts erreicht.",
+            "Man muß den Knoten lösen durch sanftes Eindringen in den Sinn der Lage.",
+            "Es bedarf großer Überlegenheit; darum ist die Zeit des Übergewichts des Großen eine große Zeit."
+        ]
+    },
+    "image": {
+        "description": "Der See geht über die Bäume weg: das Bild des Übergewichts im Großen.",
+        "lesson": "So ist der Edle, wenn er allein steht, unbesorgt, und wenn er auf die Welt verzichten muß, unverzagt.",
+        "warning": "Außerordentliche Zeiten des Übergewichts des Großen sind wie eine Überschwemmung. Aber solche Zustände gehen vorüber."
+    },
+    "lines": [
+        {
+            "position": "Anfangs eine Sechs",
+            "text": "Unterlegen mit weißem Schilfgras. Kein Makel.",
+            "interpretation": "In außerordentlichen Zeiten muss man bei Neubeginn außerordentliche Vorsicht walten lassen. Diese Vorsicht mag übertrieben scheinen, aber sie ist kein Fehler. Alle außerordentlichen Unternehmungen können nur gelingen bei äußerster Vorsicht in den Anfängen und Grundlagen."
+        },
+        {
+            "position": "Neun auf zweitem Platz",
+            "text": "Ein trockener Pappelbaum treibt einen Wurzelsproß. Ein älterer Mann bekommt eine junge Frau. Alles ist fördernd.",
+            "interpretation": "Eine außerordentliche Wiederbelebung des Wachstumsprozesses. In außerordentlichen Zeiten ist es günstig, sich zu den Niedrigen zu halten, denn hier ist die Möglichkeit einer Erneuerung gegeben."
+        },
+        {
+            "position": "Neun auf drittem Platz",
+            "text": "Der Firstbalken biegt sich durch. Unheil.",
+            "interpretation": "In Zeiten des Übergewichts des Großen heftig durchfahren wollen, ohne Rat von anderen anzunehmen, führt zum Zusammenbruch. Eigenwilliges Zufahren beschleunigt in gefahrvollen Zeiten nur den Zusammenbruch."
+        },
+        {
+            "position": "Neun auf viertem Platz",
+            "text": "Der Firstbalken wird gestützt. Heil. Sind Hintergedanken da, ist es beschämend.",
+            "interpretation": "Durch freundliche Beziehungen zu den Unteren gelingt es, der Lage Herr zu werden. Missbrauch dieser Beziehungen für persönlichen Machtgewinn ist beschämend."
+        },
+        {
+            "position": "Neun auf fünftem Platz",
+            "text": "Eine dürre Pappel treibt Blüten. Ein älteres Weib bekommt einen Mann. Kein Makel. Kein Lob.",
+            "interpretation": "Es findet keine wirkliche Erneuerung statt. In unsicheren Zeiten den Zusammenhang nach unten aufzugeben und sich nur an Höhergestellte zu halten, schafft keinen dauerhaften Zustand."
+        },
+        {
+            "position": "Oben eine Sechs",
+            "text": "Man muß durchs Wasser. Es geht über den Scheitel. Unheil. Kein Makel.",
+            "interpretation": "Das Außerordentliche ist aufs höchste gestiegen.  Mut und das Bewältigen der Aufgabe führen in Gefahr. Das Leben zu lassen für das Gute und Rechte gibt keinen Makel."
+        }
+    ]
+}

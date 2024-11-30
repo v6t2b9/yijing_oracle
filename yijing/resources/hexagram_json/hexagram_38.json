@@ -1,0 +1,67 @@
+{
+    "hexagram": {
+        "name": "KIEN / DAS SCHÖPFERISCHE",
+        "subtitle": "Die Kraft",
+        "trigrams": {
+            "above": {
+                "name": "Kien",
+                "attributes": "das Schöpferische, der Himmel"
+            },
+            "below": {
+                "name": "Kien",
+                "attributes": "das Schöpferische, der Himmel"
+            }
+        },
+        "meaning": {
+            "description": "Das Zeichen besteht aus sechs ungeteilten Strichen. Die ungeteilten Striche entsprechen der lichten, starken, geistigen, tätigen Urkraft. Das Zeichen ist ganz einheitlich stark in seiner Natur. Da ihm keinerlei Schwäche anhaftet, ist es seiner Eigenschaft nach die Kraft. Sein Bild ist der Himmel. Die Kraft wird dargestellt als nicht gebunden an bestimmte räumliche Verhältnisse. Darum wird sie aufgefaßt als Bewegung. Als Grundlage dieser Bewegung kommt die Zeit in Betracht. So ist denn auch die Macht der Zeit und die Macht des Beharrens in der Zeit, die Dauer, in dem Zeichen begriffen. Bei der Erklärung des Zeichens ist durchgehend eine doppelte Deutung zu berücksichtigen: die makrokosmische und die Wirkung in der Menschenwelt. Auf das Weltgeschehen angewandt ist in dem Zeichen das starke schöpferische Wirken der Gottheit ausgedrückt. Auf die Menschenwelt angewandt bezeichnet es das schöpferische Wirken des Heiligen und Weisen, des Herrschers und Führers der Menschen, der ihr höheres Wesen durch seine Kraft weckt und entwickelt.",
+            "season": "vierter Monat (Mai-Juni)"
+        }
+    },
+    "judgment": {
+        "description": "Das Schöpferische wirkt erhabenes Gelingen, fördernd durch Beharrlichkeit.",
+        "analysis": [
+            "Für den, der dies Orakel gewinnt, bedeutet das, daß ihm Gelingen aus den Urtiefen des Weltgeschehens zuteil werden wird und daß alles darauf ankommt, daß er allein durch Beharrlichkeit im Rechten sein und anderer Glück sucht.",
+            "Groß wahrlich ist die Ursprungskraft des Schöpferischen, alle Wesen verdanken ihm ihren Anfang. Und diese Kraft durchdringt den ganzen Himmel.",
+            "Indem er in großer Klarheit die Ursachen und Wirkungen schaut, vollendet er zur rechten Zeit die sechs Stufen und steigt zur rechten Zeit auf ihnen wie auf sechs Drachen empor zum Himmel.",
+            "Der Lauf des Schöpferischen verändert und gestaltet die Wesen, bis jedes seine rechte, ihm bestimmte Natur erlangt, dann bewahrt er sie in Übereinstimmung mit dem großen Gleichmaß. So zeigt er sich fördernd durch Beharrlichkeit.",
+            "Indem er sich mit seinem Haupt erhebt über die Menge der Wesen, kommen alle Lande zusammen in Ruhe."
+        ]
+    },
+    "image": {
+        "description": "Des Himmels Bewegung ist kraftvoll.",
+        "lesson": "So macht der Edle sich stark und unermüdlich.",
+        "warning": "Keine Information verfügbar"
+    },
+    "lines": [
+        {
+            "position": "Anfangs eine Neun",
+            "text": "Verdeckter Drache. Handle nicht.",
+            "interpretation": "Ein bedeutender Mensch ist noch unerkannt, bleibt sich aber treu und wartet in ruhig starker Geduld seine Zeit ab. Man braucht nicht zu fürchten, dass ein starker Wille sich nicht durchsetzt. Doch gilt es, seine Kraft nicht voreilig auszugeben und etwas erzwingen zu wollen, das noch nicht an der Zeit ist."
+        },
+        {
+            "position": "Neun auf zweitem Platz",
+            "text": "Erscheinender Drache auf dem Feld. Fördernd ist es, den großen Mann zu sehen.",
+            "interpretation": "Die Wirkungen der lichten Kraft beginnen sich zu zeigen. Der große Mann erscheint auf dem Felde seiner Tätigkeit. Er zeichnet sich durch Ernst und Zuverlässigkeit aus und übt großen Einfluss auf seine Umgebung aus. Es ist fördernd, ihn zu sehen."
+        },
+        {
+            "position": "Neun auf drittem Platz",
+            "text": "Der Edle ist den ganzen Tag schöpferisch tätig. Des Abends noch ist er voll innerer Sorge. Gefahr. Kein Makel.",
+            "interpretation": "Ein Wirkungskreis eröffnet sich für den bedeutenden Mann.  Es gibt viel zu tun, und selbst abends drängen sich Pläne und Sorgen. Gefahr besteht am Übergang von der Niedrigkeit in die Höhe. Wahre Größe wird jedoch durch Versuchungen nicht beeinträchtigt."
+        },
+        {
+            "position": "Neun auf viertem Platz",
+            "text": "Schwankender Aufschwung über die Tiefe. Kein Makel.",
+            "interpretation": "Die Stelle des Übergangs ist erreicht, wo Freiheit sich betätigen kann. Der bedeutende Mann hat die Wahl, sich aufzuschwingen oder sich zurückzuziehen.  Wenn er wahr und folgerichtig handelt, findet er den richtigen Weg."
+        },
+        {
+            "position": "Neun auf fünftem Platz",
+            "text": "Fliegender Drache am Himmel. Fördernd ist es, den großen Mann zu sehen.",
+            "interpretation": "Der große Mann ist in der Sphäre der Himmlischen angelangt. Sein Einfluss erstreckt sich weithin sichtbar über die Welt. Jeder, der ihn sieht, kann sich selig preisen."
+        },
+        {
+            "position": "Oben eine Neun",
+            "text": "Hochmütiger Drache wird zu bereuen haben.",
+            "interpretation": "Wenn man die Fühlung mit den Menschen verliert, führt das zu Vereinsamung und Misserfolg. Eine Warnung vor übermäßigem Ehrgeiz."
+        }
+    ]
+}

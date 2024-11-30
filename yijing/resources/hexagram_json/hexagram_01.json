@@ -1,0 +1,66 @@
+{
+    "hexagram": {
+        "name": "GUAI / DER DURCHBRUCH",
+        "subtitle": "Die Entschlossenheit",
+        "trigrams": {
+            "above": {
+                "name": "Dui",
+                "attributes": "das Heitere, der See"
+            },
+            "below": {
+                "name": "Kien",
+                "attributes": "das Schöpferische, der Himmel"
+            }
+        },
+        "meaning": {
+            "description": "Das Zeichen bedeutet einerseits einen Durchbruch nach lange angesammelter Spannung, wie den Durchbruch eines geschwellten Flusses durch seine Dämme, wie einen Wolkenbruch. Auf menschliche Verhältnisse übertragen, ist es andererseits die Zeit, da allmählich die Gemeinen im Schwinden sind. Ihr Einfluß ist im Abnehmen, und durch eine entschlossene Aktion kommt eine Änderung der Verhältnisse zum Durchbruch.",
+            "season": "dritter Monat (April-Mai)"
+        }
+    },
+    "judgment": {
+        "description": "Der Durchbruch. Entschlossen muß man am Hof des Königs die Sache bekanntmachen. Der Wahrheit gemäß muß sie verkündet werden. Gefahr ! Man muß seine eigene Stadt benachrichtigen. Nicht fördernd ist es, zu den Waffen zu greifen. Fördernd ist es, etwas zu unternehmen.",
+        "analysis": [
+            "Leidenschaft und Vernunft müssen sich verbinden.",
+            "Entschlossenheit und Wahrheit sind wichtig, um das Richtige durchzusetzen.",
+            "Es ist wichtig, die eigene Gemeinschaft zu informieren und zu mobilisieren.",
+            "Gewalt sollte vermieden werden, stattdessen sind konstruktive Maßnahmen gefragt."
+        ]
+    },
+    "image": {
+        "description": "Der See ist an den Himmel emporgestiegen: das Bild des Durchbruchs. So spendet der Edle Reichtum nach oben und teilt ihn nach unten.",
+        "lesson": "Der:die Edle spendet Reichtum nach oben und teilt ihn nach unten.",
+        "warning": "Sammeln führt zu Zerstreuen, Anhäufen zu Zerbrechen."
+    },
+    "lines": [
+        {
+            "position": "Anfangs eine Neun",
+            "text": "Mächtig in den vorwärtsschreitenden Zehen. Geht man, so kommt man nicht voran.",
+            "interpretation": "Zu Beginn ist entschlossenes Voranschreiten, führt aber nicht zum Ziel. Man sollte seine Kraft noch nicht zu früh einsetzen."
+        },
+        {
+            "position": "Neun auf zweitem Platz",
+            "text": "Warnung! Der Ruf ertönt. Am Abend und in der Nacht: Waffen! Man fürchte sich nicht.",
+            "interpretation": "Es droht Gefahr, aber man soll sich nicht entmutigen lassen. Durch Wachsamkeit und Entschlossenheit kann man das Böse abwehren."
+        },
+        {
+            "position": "Neun auf drittem Platz",
+            "text": "Mächtig an den Backenknochen bringt es Unheil. Der Edle ist entschlossen zum Durchbruch. Er wandelt allein und trifft auf Regen. Er wird befleckt, aber man wird ihm nicht zürnen.",
+            "interpretation": "Entschlossenheit kann in Aggressivität umschlagen und Unheil bringen. Der Edle bleibt auch in schwierigen Zeiten standhaft und wird trotz kleiner Fehler nicht getadelt."
+        },
+        {
+            "position": "Neun auf viertem Platz",
+            "text": "Am Gesäß gibt's kein Fleisch. Geht man, so wird man aufgehalten. Zieht man einen Schafbock hinter sich her, so verschwindet die Reue. Man hört die Worte, glaubt aber nicht.",
+            "interpretation": "Man ist in einer schwachen Position und stößt auf Hindernisse. Durch Demut und Entschlossenheit kann man jedoch Reue vermeiden. Man trifft auf Unglauben, sollte aber dennoch an seiner Überzeugung festhalten."
+        },
+        {
+            "position": "Neun auf fünftem Platz",
+            "text": "Wie Unkraut geht der Durchbruch. Geht man, so ist es ungefährlich.",
+            "interpretation": "Der Durchbruch geschieht leicht und mühelos. Man kann entschlossen voranschreiten, ohne Schaden zu nehmen."
+        },
+        {
+            "position": "Oben eine Sechs",
+            "text": "Kein Schreien. Unheil!",
+            "interpretation": "Der Durchbruch ist vollzogen, aber es fehlt an Besonnenheit und Ruhe. Übereiltes Handeln führt zu Unheil."
+        }
+    ]
+}

@@ -1,0 +1,67 @@
+{
+    "hexagram": {
+        "name": "YÜ / DIE BEGEISTERUNG",
+        "subtitle": "Die Begeisterung",
+        "trigrams": {
+            "above": {
+                "name": "Dschen",
+                "attributes": "das Erregende, der Donner"
+            },
+            "below": {
+                "name": "Kun",
+                "attributes": "das Empfangende, die Erde"
+            }
+        },
+        "meaning": {
+            "description": "Die Zeit der Begeisterung beruht darauf, daß ein bedeutender Mann da ist, der in Fühlung mit der Volksseele ist und in Übereinstimmung mit ihr handelt. Darum findet er allgemeinen, willigen Gehorsam. Um Begeisterung zu wecken, ist es daher nötig, daß man sich mit seinen Anordnungen nach der Natur der Geführten richtet. Auf dieser Regel der Bewegung auf der Linie des geringsten Widerstandes beruht die Unverbrüchlichkeit der Naturgesetze.",
+            "season": "Keine Information verfügbar"
+        }
+    },
+    "judgment": {
+        "description": "Die Begeisterung. Fördernd ist es, Gehilfen einzusetzen und Heere marschieren zu lassen.",
+        "analysis": [
+            "Die Begeisterung beruht auf einem bedeutenden Mann in Fühlung mit der Volksseele.",
+            "Anordnungen müssen sich nach der Natur der Geführten richten.",
+            "Die Unverbrüchlichkeit der Naturgesetze beruht auf der Bewegung auf der Linie des geringsten Widerstandes.",
+            "Gesetze müssen im Volksempfinden wurzeln.",
+            "Begeisterung ermöglicht den Einsatz von Gehilfen und den Erfolg von Massenbewegungen."
+        ]
+    },
+    "image": {
+        "description": "Der Donner kommt aus der Erde hervorgetönt: das Bild der Begeisterung. So machten die alten Könige Musik, um die Verdienste zu ehren, und brachten sie herrlich dem höchsten Gotte dar, indem sie ihre Ahnen dazu einluden.",
+        "lesson": "Der:die Edle nutzt die Musik, um die Herzen der Menschen zu bewegen und zu vereinen, die Tugenden der Helden zu preisen und die Verbindung zur unsichtbaren Welt zu stärken. Er:Sie verehrt die Ahnen und verbindet so die eigene Vergangenheit mit der Gottheit.",
+        "warning": "Keine Information verfügbar"
+    },
+    "lines": [
+        {
+            "position": "Anfangs eine Sechs",
+            "text": "Begeisterung, die sich äußert, bringt Unheil.",
+            "interpretation": "Jemand in untergeordneter Stellung rühmt sich seiner vornehmen Beziehungen und zieht dadurch Unheil an. Begeisterung darf nicht egoistisch sein, sondern muss verbinden."
+        },
+        {
+            "position": "Sechs auf zweitem Platz",
+            "text": "Fest wie ein Stein. Kein ganzer Tag. Beharrlichkeit bringt Heil.",
+            "interpretation": "Jemand lässt sich nicht von Illusionen betören und erkennt die Zeichen der Zeit. Er ist weder schmeichlerisch noch nachlässig und zieht sich rechtzeitig zurück. Beharrlichkeit bringt Heil."
+        },
+        {
+            "position": "Sechs auf drittem Platz",
+            "text": "Nach oben blickende Begeisterung schafft Reue. Zögern bringt Reue.",
+            "interpretation": "Begeisteres Emporblicken im Gegensatz zur Selbständigkeit der vorigen Linie. Zögern und falsches Timing bringen Reue."
+        },
+        {
+            "position": "Neun auf viertem Platz",
+            "text": "Der Ursprung der Begeisterung. Er erreicht Großes. Zweifle nicht. Die Freunde scharen sich um dich wie um eine Haarspange.",
+            "interpretation": "Jemand erweckt Begeisterung durch Sicherheit und Wahrhaftigkeit. Er zieht Menschen an und gewinnt sie zur Mitarbeit. Er gibt Halt und vereinigt sie wie eine Haarspange."
+        },
+        {
+            "position": "Sechs auf fünftem Platz",
+            "text": "Beharrlich krank und stirbt doch immer nicht.",
+            "interpretation": "Begeisterung wird verhindert durch dauernden Druck. Dieser Druck kann aber auch gut sein, indem er vor leerer Begeisterung bewahrt und so das Leben erhält."
+        },
+        {
+            "position": "Oben eine Sechs",
+            "text": "Verblendete Begeisterung. Aber wenn man nach der Vollendung zur Änderung kommt, so ist das kein Makel.",
+            "interpretation": "Verblendete Begeisterung ist schlecht, aber Änderung nach der Vollendung ist möglich und günstig. Ernüchterung ist möglich."
+        }
+    ]
+}

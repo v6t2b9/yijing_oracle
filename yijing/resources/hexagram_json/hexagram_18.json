@@ -1,0 +1,66 @@
+{
+    "hexagram": {
+        "name": "GUAN / DIE BETRACHTUNG (DER ANBLICK)",
+        "subtitle": "Das Vorbild",
+        "trigrams": {
+            "above": {
+                "name": "Sun",
+                "attributes": "das Sanfte, der Wind"
+            },
+            "below": {
+                "name": "Kun",
+                "attributes": "das Empfangende, die Erde"
+            }
+        },
+        "meaning": {
+            "description": "Das Zeichen kann als das Bild eines Turmes aufgefasst werden, von dem man eine weite Aussicht ringsumher hat und der selbst weithin sichtbar ist. Es symbolisiert einen Herrscher, der das Gesetz des Himmels und die Sitten des Volkes betrachtet und mit seiner guten Regierung ein Vorbild ist.",
+            "season": "achter Monat (September-Oktober)"
+        }
+    },
+    "judgment": {
+        "description": "Die Betrachtung. Die Waschung ist geschehen, aber noch nicht die Darbringung. Vertrauensvoll blicken sie zu ihm auf.",
+        "analysis": [
+            "Der Zeitpunkt zwischen Waschung und Opferdarbringung ist der heiligste, der Augenblick höchster innerer Sammlung.",
+            "Aufrichtige Frömmigkeit wirkt durch Betrachtung umwandelnd und ehrfurchtgebietend.",
+            "Die Betrachtung des göttlichen Sinns des Weltgeschehens gibt dem auf Menschen wirkenden Mann die Mittel, dieselben Wirkungen auszuüben.",
+            "Innere Sammlung, wie sie religiöse Betrachtung hervorbringt, lässt einen die göttlichen Lebensgesetze schauen und durch deren Verwirklichung in der eigenen Persönlichkeit auf andere wirken."
+        ]
+    },
+    "image": {
+        "description": "Der Wind geht über die Erde hin: das Bild der Betrachtung. So besuchten die alten Könige die Weltgegenden, betrachteten das Volk und spendeten Belehrung.",
+        "lesson": "Der:die Edle:n besichtigt das Volk und spendet Belehrung.",
+        "warning": "Keine Information verfügbar"
+    },
+    "lines": [
+        {
+            "position": "Anfangs eine Sechs",
+            "text": "Knabenhaftes Betrachten. Für einen geringen Menschen kein Makel. Für einen Edlen beschämend.",
+            "interpretation": "Verständnisloses Betrachten aus der Ferne. Für die Masse nicht von Bedeutung, aber für den höheren Menschen eine Schande, der die herrschenden Einflüsse verstehen muss."
+        },
+        {
+            "position": "Sechs auf zweitem Platz",
+            "text": "Betrachtung durch die Türspalte. Fördernd für die Beharrlichkeit einer Frau.",
+            "interpretation": "Beschränkte, subjektive Betrachtungsweise. Für eine Hausfrau angebracht, aber für einen Mann im öffentlichen Leben vom Übel."
+        },
+        {
+            "position": "Sechs auf drittem Platz",
+            "text": "Betrachtung meines Lebens entscheidet über Fortschritt oder Rückzug.",
+            "interpretation": "Einkehr der Betrachtung und Überwindung der naiven Selbstsucht. Reflexion und Objektivität. Selbsterkenntnis durch Betrachtung der eigenen Lebenswirkungen."
+        },
+        {
+            "position": "Sechs auf viertem Platz",
+            "text": "Betrachtung des Lichtes des Reichs. Fördernd ist es, als Gast eines Königs zu wirken.",
+            "interpretation": "Der Mann, der die Geheimnisse eines blühenden Reichs versteht, soll an einen maßgebenden Platz gebracht und geehrt werden, nicht als Werkzeug benutzt."
+        },
+        {
+            "position": "Neun auf fünftem Platz",
+            "text": "Betrachtung meines Lebens. Der Edle ist ohne Makel.",
+            "interpretation": "Ein Mann in maßgebender Stellung muss dauernd zur Selbstprüfung bereit sein, indem er die Wirkungen prüft, die von ihm ausgehen."
+        },
+        {
+            "position": "Oben eine Neun",
+            "text": "Betrachtung seines Lebens. Der Edle ist ohne Makel.",
+            "interpretation": "Der Weise betrachtet außerhalb des Weltgetriebes frei vom Ich die Gesetze des Lebens und erkennt so das Höchste, weil er frei von Makel wird."
+        }
+    ]
+}

@@ -1,0 +1,70 @@
+{
+    "hexagram": {
+        "name": "GU / DIE ARBEIT AM VERDORBENEN",
+        "subtitle": "Das Verdorbene als Aufgabe",
+        "trigrams": {
+            "above": {
+                "name": "Gen",
+                "attributes": "das Stillehalten, der Berg"
+            },
+            "below": {
+                "name": "Sun",
+                "attributes": "das Sanfte, der Wind"
+            }
+        },
+        "meaning": {
+            "description": "Das chinesische Zeichen Gu stellt eine Schüssel dar, in deren Inhalt Würmer wachsen. Das bedeutet das Verdorbene. Das ist dadurch gekommen, daß die sanfte Gleichgültigkeit des unteren Urzeichens mit der starren Trägheit des oberen Urzeichens zusammengekommen ist, so daß die Verhältnisse in Stagnation gerieten. Da also eine Verschuldung vorliegt, so enthalten diese Zustände die Aufforderung zu ihrer Beseitigung. Daher ist die Bedeutung des Zeichens nicht einfach »das Verdorbene«, sondern »das Verdorbene als Aufgabe«, die »Arbeit am Verdorbenen.",
+            "season": "Keine Information verfügbar"
+        }
+    },
+    "judgment": {
+        "description": "Die Arbeit am Verdorbenen hat erhabenes Gelingen. Fördernd ist es, das große Wasser zu durchqueren. Vor dem Anfangspunkt drei Tage, nach dem Anfangspunkt drei Tage.",
+        "analysis": [
+            "Was durch Schuld von Menschen verdorben ist, kann durch Arbeit von Menschen wieder gutgemacht werden.",
+            "Es ist nicht unabänderliches Geschick, sondern eine Folge von Mißbrauch der menschlichen Freiheit.",
+            "Die Arbeit an der Besserung ist aussichtsvoll, weil sie im Einklang mit den Möglichkeiten der Zeit steht.",
+            "Man darf vor Arbeit und Gefahr (symbolisiert durch das Durchqueren des großen Wassers) nicht zurückschrecken.",
+            "Das Gelingen hat zur Vorbedingung die rechte Überlegung.",
+            "Erst muß man die Gründe kennen, die zum Verderben geführt haben, ehe man sie abstellen kann: daher Achtung während der Zeit vor dem Anfangspunkt.",
+            "Dann muß man sorgen, daß das neue Geleise sich sicher einfährt, so daß ein Rückfall vermieden wird: daher Achtung auf die Zeit nach dem Anfangspunkt.",
+            "An die Stelle der Gleichgültigkeit und Trägheit müssen Entschlossenheit und Energie treten."
+        ]
+    },
+    "image": {
+        "description": "Unten am Berg weht der Wind: das Bild des Verderbens. So rüttelt der Edle die Leute auf und stärkt ihren Geist.",
+        "lesson": "Der Edle rüttelt die Leute auf und stärkt ihren Geist.",
+        "warning": "Wenn der Wind unten am Berg weht, so wird er zurückgeworfen und verdirbt die Pflanzen. Das enthält die Aufforderung zu bessern. So ist es auch mit den niedrigen Stimmungen und Moden: sie bringen Verderben in die menschliche Gesellschaft. Um das zu beseitigen, muß der Edle die Gesellschaft erneuern. Der Edle muss die Stagnation beseitigen durch Aufrütteln der öffentlichen Meinung (wie der Wind aufrüttelnd wirkt) und dann den Charakter der Leute stärken und beruhigen (wie der Berg Ruhe und Nahrung allem Wachstum in seiner Umgebung gibt)."
+    },
+    "lines": [
+        {
+            "position": "Anfangs eine Sechs",
+            "text": "Zurechtbringen des vom Vater Verdorbenen. Wenn ein Sohn da ist, bleibt auf dem heimgegangenen Vater kein Makel. Gefahr. Schließlich Heil.",
+            "interpretation": "Das starre Stehenbleiben beim Hergebrachten hat Verderben zur Folge gehabt. Aber das Verderben ist noch nicht tief eingewurzelt, darum kann es noch leicht gebessert werden. Es ist, wie wenn ein Sohn das Verderben, das unter seinem Vater sich eingeschlichen hat, ausgleicht. Da bleibt auf dem Vater kein Makel sitzen. Aber man darf die Gefahr nicht übersehen und die Sache zu leicht nehmen. Nur wenn man sich der mit jeder Reform verbundenen Gefahr bewußt ist, geht schließlich alles gut."
+        },
+        {
+            "position": "Neun auf zweitem Platz",
+            "text": "Zurechtbringen des von der Mutter Verdorbenen. Man darf nicht zu beharrlich sein.",
+            "interpretation": "Es handelt sich um Fehler, die aus Schwachheit das Verderben veranlaßt haben. Daher das Symbol des von der Mutter Verdorbenen. Da ist beim Ausgleich eine gewisse zarte Rücksicht notwendig. Man darf nicht allzu schroff vorgehen wollen, damit man nicht durch Schroffheit verletzt."
+        },
+        {
+            "position": "Neun auf drittem Platz",
+            "text": "Zurechtbringen des vom Vater Verdorbenen. Ein wenig wird es Reue geben. Kein großer Makel.",
+            "interpretation": "Es ist hier jemand gezeichnet, der beim Zurechtbringen der Fehler der Vergangenheit etwas zu energisch vorgeht. Dadurch werden sicher dann und wann kleinere Unzuträglichkeiten und Verstimmungen entstehen. Aber besser zuviel als zuwenig Energie. Wenn man daher auch manchmal ein wenig zu bereuen hat, so bleibt man doch frei von jedem ernstlichen Makel."
+        },
+        {
+            "position": "Sechs auf viertem Platz",
+            "text": "Dulden des vom Vater Verdorbenen. Beim Fortmachen sieht man Beschämung.",
+            "interpretation": "Es wird hier die Lage gezeigt, daß jemand aus Schwachheit dem Verderben, das aus der Vergangenheit stammt und sich jetzt zu zeigen beginnt, nicht entgegentritt, sondern ihm seinen Lauf läßt. Wenn das so weitergeht, wird Beschämung die Folge sein."
+        },
+        {
+            "position": "Sechs auf fünftem Platz",
+            "text": "Zurechtbringen des vom Vater Verdorbenen. Man findet Lob.",
+            "interpretation": "Man sieht sich einem durch die Vernachlässigung früherer Zeiten entstandenen Verderben gegenüber. Man besitzt nicht die Kraft, ihm allein zu steuern. Doch findet man tüchtige Gehilfen, mit deren Unterstützung man zwar nicht einen schöpferischen Neuanfang, aber wenigstens eine gründliche Reform zuwege bringt, was auch des Lobes würdig ist."
+        },
+        {
+            "position": "Oben eine Neun",
+            "text": "Dient nicht Königen und Fürsten. Steckt sich höhere Ziele.",
+            "interpretation": "Nicht jeder Mensch ist verpflichtet, sich in die Weltgeschäfte zu mischen. Es gibt auch solche, die innerlich schon so weit entwickelt sind, daß sie die Berechtigung haben, der Welt ihren Lauf zu lassen, ohne sich ins politische Leben reformierend einzumischen. Aber damit ist nicht gemeint, daß sie tatenlos oder bloß kritisch sich verhalten dürften. Nur die Arbeit an den höheren Zielen der Menschheit in der eigenen Person gibt die Berechtigung zu solcher Zurückgezogenheit. Denn wenn der Weise sich auch dem Tagesgetriebe fernhält, so schafft er doch unvergleichliche Menschheitswerte für die Zukunft."
+        }
+    ]
+}

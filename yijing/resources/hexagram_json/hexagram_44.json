@@ -1,0 +1,68 @@
+{
+    "hexagram": {
+        "name": "DSCHUN / DIE ANFANGSSCHWIERIGKEIT",
+        "subtitle": "Die Anfangsschwierigkeit",
+        "trigrams": {
+            "above": {
+                "name": "Kan",
+                "attributes": "das Abgründige, das Wasser"
+            },
+            "below": {
+                "name": "Dschen",
+                "attributes": "das Erregende, der Donner"
+            }
+        },
+        "meaning": {
+            "description": "Das Zeichen deutet, wie Himmel und Erde die Einzelwesen hervorbringen. Es ist ihre erste Begegnung, die mit Schwierigkeiten verbunden ist. Die Lage deutet auf dichte, chaotische Fülle. Donner und Regen erfüllen die Luft. Aber das Chaos lichtet sich. Die Bewegung, die nach oben gerichtet ist, während das Abgründige sich senkt, kommt schließlich aus der Gefahr hinaus.",
+            "season": "Keine Information verfügbar"
+        }
+    },
+    "judgment": {
+        "description": "Die Anfangsschwierigkeit wirkt erhabenes Gelingen. Fördernd durch Beharrlichkeit. Man soll nichts unternehmen. Fördernd ist es, Gehilfen einzusetzen.",
+        "analysis": [
+            "Werdezeiten haben Schwierigkeiten. Es ist wie eine Erstgeburt.",
+            "Aber diese Schwierigkeiten entstehen aus der Fülle dessen was nach Gestaltung ringt.",
+            "Es ist alles in Bewegung begriffen, darum ist trotz der vorhandenen Gefahr Aussicht auf großen Erfolg da wenn man Beharrlichkeit hat.",
+            "Wenn solche Anfangszeiten als Schicksal kommen, so ist noch alles ungestaltet und dunkel. Darum muß man abwarten, denn jedes vorzeitige Zufassen könnte Mißerfolg bringen.",
+            "Es ist von großer Wichtigkeit, daß man nicht allein bleibt. Man muß Gehilfen haben, um gemeinsam mit ihnen das Chaos zu bewältigen.",
+            "Das heißt aber nicht, daß man selbst untätig den Vorgängen zuschauen soll, sondern man muß mit Hand anlegen, anfeuernd und leitend bei allem dabei sein."
+        ]
+    },
+    "image": {
+        "description": "Wolken und Donner: das Bild der Anfangsschwierigkeit.",
+        "lesson": "So wirkt der Edle entwirrend und ordnend.",
+        "warning": "Keine Information verfügbar"
+    },
+    "lines": [
+        {
+            "position": "Anfangs eine Neun",
+            "text": "Zögern und Hemmung. Fördernd ist es, beharrlich zu bleiben. Fördernd ist es, Gehilfen einzusetzen.",
+            "interpretation": "Wenn man zu Anfang einer Unternehmung auf Hemmung stößt, so darf man den Fortschritt nicht erzwingen wollen, sondern muß vorsichtig innehalten. Aber man darf sich nicht irremachen lassen, sondern muß dauernd und beharrlich sein Ziel im Auge behalten. Wichtig ist es, daß man sich die richtigen Hilfskräfte sucht."
+        },
+        {
+            "position": "Sechs auf zweitem Platz",
+            "text": "Schwierigkeiten türmen sich. Pferd und Wagen trennen sich. Nicht Räuber er ist, Will freien zur Frist. Das 'Mädchen ist keusch, verspricht sich nicht. Zehn Jahre, dann verspricht sie sich.",
+            "interpretation": "Man befindet sich in Schwierigkeit und Hemmung. Da zeigt sich plötzlich eine Wendung. Wenn in Zeiten der Schwierigkeit, da man auf Hemmung stößt, unerwartet eine Erleichterung angeboten wird von einer Seite, zu der man keine Beziehung hat, so soll man vorsichtig sein und keine Verpflichtungen auf sich nehmen."
+        },
+        {
+            "position": "Sechs auf drittem Platz",
+            "text": "Wer den Hirsch jagt ohne Förster der verirrt sich nur im Wald. Der Edle versteht die Zeichen der Zeit und steht lieber ab. Weitermachen bringt Beschämung.",
+            "interpretation": "Wenn man keinen Führer hat und in einem fremden Walde jagen will, so verirrt man sich. Man darf sich aus den Schwierigkeiten, in denen man steht, nicht unbedacht und führerlos herausstellen wollen. Voreiliges Streben ohne die nötige Leitung führt zu Mißerfolg und Schande."
+        },
+        {
+            "position": "Sechs auf viertem Platz",
+            "text": "Pferd und Wagen trennen sich. Suche nach Vereinigung. Hingehen bringt Heil. Alles wirkt fördernd.",
+            "interpretation": "Man ist in einer Lage, da man die Pflicht hat, zu handeln, aber die Kraft reicht nicht aus. Doch bietet sich Gelegenheit, Anschluß zu finden. Da gilt es, zuzugreifen. Es ist ein Zeichen innerer Klarheit, wenn man es über sich gewinnt, den ersten Schritt zu tun."
+        },
+        {
+            "position": "Neun auf fünftem Platz",
+            "text": "Schwierigkeiten im Segnen. Kleine Beharrlichkeit bringt Heil, große Beharrlichkeit bringt Unheil.",
+            "interpretation": "Man findet sich in der Lage, daß man keine Möglichkeit hat, seine guten Absichten so zum Ausdruck zu bringen, daß sie wirklich in die Erscheinung treten und verstanden werden. Da muß man dann vorsichtig sein und allmählich vorgehen."
+        },
+        {
+            "position": "Oben eine Sechs",
+            "text": "Pferd und Wagen trennen sich. Blutige Tränen ergießen sich.",
+            "interpretation": "Es gibt Menschen, denen werden die Anfangsschwierigkeiten zu schwer. Sie bleiben stecken und finden sich nicht mehr durch. Sie lassen die Hände sinken und geben den Kampf auf."
+        }
+    ]
+}

@@ -1,0 +1,66 @@
+{
+    "hexagram": {
+        "name": "TUNG JEN / GEMEINSCHAFT MIT MENSCHEN",
+        "subtitle": "Die Vereinigung",
+        "trigrams": {
+            "above": {
+                "name": "Kien",
+                "attributes": "das Schöpferische, der Himmel"
+            },
+            "below": {
+                "name": "Lü",
+                "attributes": "das Haftende, die Flamme"
+            }
+        },
+        "meaning": {
+            "description": "Die Natur des Feuers ist es, emporzulodern zum Himmel. Das gibt die Idee der Gemeinschaft. Die zweite Linie ist es, die durch ihr zentrales Wesen die fünf starken um sich vereint. Das Zeichen ist das Gegenstück zu Nr. 7, das Heer. Dort: innen Gefahr, außen Gehorsam als Wesen des kriegerischen Heeres, das zu seinem Zusammenhalt des einen Starken unter den vielen Schwachen bedarf. Hier: innen Klarheit, außen Stärke, als Wesen der friedlichen Vereinigung der Menschen, die zu ihrem Zusammenhalt des einen Weichen unter den vielen Festen bedarf.",
+            "season": "Keine Information verfügbar"
+        }
+    },
+    "judgment": {
+        "description": "Gemeinschaft mit Menschen im Freien: Gelingen. Fördernd ist es, das große Wasser zu durchqueren. Fördernd ist des Edlen Beharrlichkeit.",
+        "analysis": [
+            "Die wirkliche Gemeinschaft der Menschen muß auf Grund einer kosmischen Anteilnahme zustande kommen.",
+            "Nicht Sonderzwecke des Ichs, sondern Menschheitsziele bringen dauernde Gemeinschaft unter Menschen hervor.",
+            "Wenn solche Einigkeit herrscht, dann lassen sich auch schwierige und gefährliche Aufgaben, wie das Durchqueren des großen Wassers, vollbringen.",
+            "Um aber solche Gemeinschaft zuwege bringen zu können, bedarf es eines beharrlichen und aufgeklärten Führers, der klare, einleuchtende und begeisternde Ziele hat und sie mit Kraft durchzuführen weiß."
+        ]
+    },
+    "image": {
+        "description": "Himmel zusammen mit Feuer: das Bild der Gemeinschaft mit Menschen.",
+        "lesson": "So gliedert der Edle die Stämme und unterscheidet die Dinge. Die Gemeinschaft soll nicht Vermischung der Einzelnen und Vermischung der Dinge sein - das wäre Chaos, nicht Gemeinschaft, sondern sie bedarf der gegliederten Mannigfaltigkeit, um zur Ordnung zu führen.",
+        "warning": "Keine Information verfügbar"
+    },
+    "lines": [
+        {
+            "position": "Anfangs eine Neun",
+            "text": "Gemeinschaft mit Menschen im Tore. Kein Makel.",
+            "interpretation": "Der Beginn einer Vereinigung von Menschen soll vor der Tür stattfinden. Alle stehen einander gleich nahe. Irgendwelche Sonderbestrebungen bestehen noch nicht. Die Grundlagen jeder Vereinigung müssen allen Beteiligten in gleicher Weise zugänglich sein. Geheimabmachungen bringen Unheil."
+        },
+        {
+            "position": "Sechs auf zweitem Platz",
+            "text": "Gemeinschaft mit Menschen im Klan: Beschämung.",
+            "interpretation": "Hier ist die Gefahr einer Sonderpartei auf Grund von persönlichen und selbstsüchtigen Interessen. Solche Parteiungen, die ausschließend sind und nicht für alle Raum haben, entstehen aus niedrigen Motiven und führen daher auf die Dauer zu Beschämung."
+        },
+        {
+            "position": "Neun auf drittem Platz",
+            "text": "Versteckt Waffen im Dickicht, steigt auf den hohen Hügel davor. Drei Jahre lang erhebt er sich nicht.",
+            "interpretation": "Hier ist die Gemeinschaft in Mißtrauen umgeschlagen. Man mißtraut den andern, legt geheimen Hinterhalt und sucht von ferne den andern auszuspähen. Es sind hier Hemmungen gezeigt, die der Gemeinschaft mit anderen im Wege stehen. Man hat selbst Hintergedanken. Infolge davon entfernt man sich von wahrer Gemeinschaft immer mehr."
+        },
+        {
+            "position": "Neun auf viertem Platz",
+            "text": "Er steigt auf seine Mauer, er kann nicht angreifen. Heil !",
+            "interpretation": "Hier rückt die Versöhnung nach der Entzweiung näher. Zwar sind noch trennende Mauern da. Aber die Schwierigkeiten sind zu groß. Man kommt in Not, und durch die Not kommt man zur Besinnung. Man kann nicht kämpfen, aber gerade darauf beruht das Heil."
+        },
+        {
+            "position": "Neun auf fünftem Platz",
+            "text": "Die gemeinsamen Menschen weinen erst und klagen, aber nachher lachen sie. Nach großen Kämpfen gelingt es ihnen, sich zu treffen.",
+            "interpretation": "Es sind zwei Menschen äußerlich getrennt, aber im Herzen vereint. Sie sind durch ihre Stellung im Leben auseinandergehalten. Dazwischen erheben sich viele Hindernisse, die sie trauern machen. Aber sie lassen sich nicht scheiden. Und obwohl die Überwindung dieser Hindernisse schwere Kämpfe kostet, so werden sie doch siegen, und dann wird ihre Traurigkeit in Freude sich verwandeln."
+        },
+        {
+            "position": "Oben eine Neun",
+            "text": "Gemeinschaft mit Menschen auf dem Anger: keine Reue.",
+            "interpretation": "Es fehlt hier der warme Anschluß des Herzens. Man steht eigentlich schon außerhalb der Gemeinschaft. Aber man schließt sich an. Die Gemeinschaft umfaßt nicht alle, sondern nur die äußerlich beisammen Wohnenden. Das letzte Ziel der Vereinigung der Menschheit ist hier noch nicht erreicht. Doch braucht man sich keine Vorwürfe zu machen."
+        }
+    ]
+}

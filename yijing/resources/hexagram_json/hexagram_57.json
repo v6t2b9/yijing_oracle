@@ -1,0 +1,66 @@
+{
+    "hexagram": {
+        "name": "GI DSI / NACH DER VOLLENDUNG",
+        "subtitle": "Vorsicht am Höhepunkt",
+        "trigrams": {
+            "above": {
+                "name": "Kan",
+                "attributes": "das Abgründige, das Wasser"
+            },
+            "below": {
+                "name": "Li",
+                "attributes": "das Haftende, das Feuer"
+            }
+        },
+        "meaning": {
+            "description": "Das Zeichen ist die Ausgestaltung des Zeichens Tal, der Friede (Nr. II). Der Übergang aus der Verwirrung zur Ordnung ist vollzogen, und nun ist auch im einzelnen alles auf seinem Platz. Die starken Linien sind auf den starken, die schwachen Linien sind auf den schwachen Plätzen. Das ist ein sehr günstiger Aspekt. Allein er gibt doch zu denken. Gerade wenn das vollkommene Gleichgewicht erreicht ist, kann jede Bewegung dazu führen, daß aus dem Zustand der Ordnung wieder der Zerfall entsteht.",
+            "season": "Keine Information verfügbar"
+        }
+    },
+    "judgment": {
+        "description": "Gelingen im Kleinen. Fördernd ist Beharrlichkeit. Im Anfang Heil, am Ende Wirren.",
+        "analysis": [
+            "Der Übergang von der alten in die neue Zeit ist schon vollzogen. Prinzipiell ist alles schon geregelt. Nur noch im einzelnen läßt sich Erfolg erzielen.",
+            "Es ist wichtig, die rechte Gesinnung zu wahren.",
+            "Die Gefahr der Gleichgültigkeit und daraus entstehender Verfall muss beachtet werden.",
+            "Unausgesetzte Beständigkeit und Vorsicht können negative Entwicklungen verhindern."
+        ]
+    },
+    "image": {
+        "description": "Das Wasser ist oberhalb des Feuers: das Bild des Zustands nach der Vollendung.",
+        "lesson": "Der Edle bedenkt das Unglück und rüstet sich im voraus dagegen.",
+        "warning": "Die Spannung der Elemente Wasser und Feuer erfordert Vorsicht.  So gibt es auch im Leben Verhältnisse, da alle Kräfte ausgeglichen sind und zusammenwirken und daher scheinbar alles in bester Ordnung ist. Der Weise allein erkennt in solchen Zeiten die Momente der Gefahr und weiß durch rechtzeitige Vorkehrungen sie zu bannen."
+    },
+    "lines": [
+        {
+            "position": "Anfangs eine Neun",
+            "text": "Er hemmt seine Räder. Er kommt mit dem Schwanz ins Wasser. Kein Makel.",
+            "interpretation": "In Zeiten des Fortschritts und der Entwicklung ist Zurückhaltung am Anfang wichtig, um nicht über das Ziel hinauszuschießen.  Ein starker Charakter lässt sich nicht vom allgemeinen Drängen anstecken."
+        },
+        {
+            "position": "Sechs auf zweitem Platz",
+            "text": "Die Frau verliert ihren Wagenvorhang. Lauf ihm nicht nach, am siebten Tage bekommst du es.",
+            "interpretation": "Wenn man von maßgebender Seite kein Vertrauen erhält, sollte man nicht danach streben, sondern ruhig warten und den persönlichen Wert selbständig ausbilden. Was einem gehört, kommt von selbst zurück."
+        },
+        {
+            "position": "Neun auf drittem Platz",
+            "text": "Der hohe Ahn züchtigt das Teufelsland. Nach drei Jahren überwindet er es. Gemeine darf man nicht verwenden.",
+            "interpretation": "Nach Zeiten der Vollendung kann die Notwendigkeit der Expansion entstehen.  Dabei ist eine richtige Vorgehensweise wichtig, und man sollte die neuen Gebiete nicht als Versorgungsanstalt für Unwürdige missbrauchen."
+        },
+        {
+            "position": "Sechs auf viertem Platz",
+            "text": "Die schönsten Kleider geben Lumpen. Den ganzen Tag sei vorsichtig.",
+            "interpretation": "In Zeiten der Kulturblüte können Erschütterungen auftreten, die innere Schäden aufdecken.  Diese sollten ernst genommen und nicht verheimlicht werden, um üble Folgen abzuwenden."
+        },
+        {
+            "position": "Neun auf fünftem Platz",
+            "text": "Der Nachbar im Osten, der einen Ochsen schlachtet, bekommt nicht soviel wirkliches Glück wie der Nachbar im Westen mit seinem kleinen Opfer.",
+            "interpretation": "Äußerer Prunk in religiösen Handlungen ist weniger wichtig als innerer Ernst und die Befolgung des göttlichen Willens."
+        },
+        {
+            "position": "Oben eine Sechs",
+            "text": "Er kommt mit dem Haupt ins Wasser. Gefahr.",
+            "interpretation": "Leichtsinniges Zurückblicken auf überwundene Gefahren bringt Unglück.  Man sollte unaufhaltsam fortschreiten."
+        }
+    ]
+}

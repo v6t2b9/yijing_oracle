@@ -1,0 +1,70 @@
+{
+    "hexagram": {
+        "name": "BI / DIE ANMUT",
+        "subtitle": "Die schöne Form",
+        "trigrams": {
+            "above": {
+                "name": "Gen",
+                "attributes": "das Stillehalten, der Berg"
+            },
+            "below": {
+                "name": "Li",
+                "attributes": "das Haftende, das Feuer"
+            }
+        },
+        "meaning": {
+            "description": "Das Zeichen zeigt ein Feuer, das aus den geheimen Tiefen der Erde hervorbricht und emporflackernd den Berg, die himmlische Höhe, erleuchtet und verschönt. Die Anmut, die schöne Form ist nötig bei jeder Vereinigung, damit sie geordnet und lieblich wird und nicht chaotisch und ungeordnet.",
+            "season": "Keine Information verfügbar"
+        }
+    },
+    "judgment": {
+        "description": "Anmut hat Gelingen. Im Kleinen ist es fördernd, etwas zu unternehmen. Die Anmut bringt Gelingen. Aber sie ist nicht das Wesentliche, die Grundlage, sondern nur die Verzierung. Daher darf sie nur sparsam, im Kleinen angewandt werden. In dem unteren Zeichen, Feuer, tritt eine weiche Linie zwischen zwei starke und macht sie schön; die starken aber sind das Wesen, die schwache Linie ist die verschönernde Form. Im oberen Zeichen, Berg, tritt die starke Linie bestimmend an die Spitze, so daß sie auch hier als ausschlaggebend in Betracht kommt. In der Natur sieht man am Himmel das starke Licht der Sonne. Auf ihr beruht das Leben der Welt. Aber dieses Starke, Wesentliche wird umgewandelt und findet anmutige Abwechslung durch Mond und Sterne. Im Menschenleben besteht die schöne Form darin, daß wie Berge feststehende, starke Ordnungen da sind, die durch die klare Schönheit gefällig gemacht werden. Die Betrachtung der Formen am Himmel verleiht die Fähigkeit, die Zeit und ihre wechselnden Anforderungen zu verstehen. Die Betrachtung der Formen im Menschenleben verleiht die Möglichkeit, die Welt zu gestalten. Bemerkung: Das Zeichen zeigt die ruhende Schönheit: innen Klarheit und außen Stille. Das ist die Ruhe der reinen Betrachtung. Wenn das Begehren schweigt, der Wille zur Ruhe kommt, dann tritt die Welt als Vorstellung in die Erscheinung. Und als solche ist sie schön und dem Kampf des Daseins entnommen. Das ist die Welt der Kunst. Aber durch bloße Betrachtung wird der Wille nicht endgültig zur Ruhe gebracht. Er wird wieder erwachen, und alles Schöne war dann nur ein vorübergehender Moment der Erhebung. Darum ist dies noch nicht der eigentliche Weg zur Erlösung. Kungtse fühlte sich daher auch sehr unbehaglich, a1s er bei Gelegenheit einer Befragung des Orakels das Zeichen »Anmut« bekam.",
+        "analysis": [
+            "Anmut hat Gelingen, aber nur im Kleinen.",
+            "Anmut ist Verzierung, nicht das Wesentliche.",
+            "Sparsamkeit in der Anwendung von Anmut ist wichtig.",
+            "Starke Ordnungen werden durch klare Schönheit gefällig gemacht.",
+            "Betrachtung der Formen führt zu Verständnis und Gestaltung.",
+            "Ruhende Schönheit entsteht durch Klarheit innen und Stille außen.",
+            "Kunst ist Ausdruck der reinen Betrachtung.",
+            "Bloße Betrachtung führt nicht zur endgültigen Ruhe."
+        ]
+    },
+    "image": {
+        "description": "Unten am Berg ist das Feuer: das Bild der Anmut. So verfährt der Edle bei der Klarstellung der laufenden Angelegenheiten, aber er wagt es nicht, danach Streitfragen zu entscheiden.",
+        "lesson": "Der Edle klärt laufende Angelegenheiten, entscheidet aber keine Streitfragen durch Anmut.",
+        "warning": "Anmut genügt für kleinere Angelegenheiten, aber wichtige Fragen bedürfen größeren Ernstes."
+    },
+    "lines": [
+        {
+            "position": "Anfangs eine Neun",
+            "text": "Macht seine Zehen anmutig, verläßt den Wagen und geht.",
+            "interpretation": "Zu Beginn ist entschlossenes Voranschreiten aus eigener Kraft anmutiger, als zweifelhafte Erleichterungen zu nutzen."
+        },
+        {
+            "position": "Sechs auf zweitem Platz",
+            "text": "Macht seinen Kinnbart anmutig.",
+            "interpretation": "Die Form ist nur im Gefolge des Gehalts wichtig. Eitelkeit entsteht, wenn man sich nur auf Äußerlichkeiten konzentriert."
+        },
+        {
+            "position": "Neun auf drittem Platz",
+            "text": "Anmutig und feucht. Dauernde Beharrlichkeit bringt Heil.",
+            "interpretation": "Man befindet sich in einer anmutigen Lage, aber Beharrlichkeit ist nötig, um nicht in Bequemlichkeit zu versinken."
+        },
+        {
+            "position": "Sechs auf viertem Platz",
+            "text": "Anmut oder Einfachheit? Ein weißes Pferd kommt wie geflogen: Nicht Räuber er ist, Will freien zur Frist.",
+            "interpretation": "Es ist Zeit, zwischen Anmut und Einfachheit zu wählen. Die treue Verbindung mit einem Freund bringt Beruhigung."
+        },
+        {
+            "position": "Sechs auf fünftem Platz",
+            "text": "Anmut in Hügeln und Gärten. Das Seidenbündel ist ärmlich und klein. Beschämung, doch schließlich Heil.",
+            "interpretation": "Man zieht sich von oberflächlichem Luxus zurück und findet einen Freund. Trotz geringer Gaben zählt die wahre Gesinnung."
+        },
+        {
+            "position": "Oben eine Neun",
+            "text": "Schlichte Anmut. Kein Makel.",
+            "interpretation": "Auf der obersten Stufe wird aller Schmuck abgelegt. Die höchste Anmut liegt in der schlichten, sachgemäßen Gestaltung."
+        }
+    ]
+}

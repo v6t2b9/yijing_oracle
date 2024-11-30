@@ -1,0 +1,66 @@
+{
+    "hexagram": {
+        "name": "HUAN / DIE AUFLÖSUNG",
+        "subtitle": "Die Zerstreuung",
+        "trigrams": {
+            "above": {
+                "name": "Sun",
+                "attributes": "das Sanfte, der Wind"
+            },
+            "below": {
+                "name": "Kan",
+                "attributes": "das Abgründige, das Wasser"
+            }
+        },
+        "meaning": {
+            "description": "Der Wind, der oben über das Wasser fährt, zerstreut es und löst es auf in Schaum und Dunst. Darin liegt auch der Gedanke, daß die Lebensenergie, wenn sie sich im Menschen staut (was durch die Eigenschaft des unteren Zeichens als Gefahr angedeutet ist) durch die Sanftheit wieder zerstreut und aufgelöst wird.",
+            "season": "Keine Information verfügbar"
+        }
+    },
+    "judgment": {
+        "description": "Die Auflösung. Gelingen. Der König naht seinem Tempel. Fördernd ist es, das große Wasser zu durchqueren. Fördernd ist Beharrlichkeit.",
+        "analysis": [
+            "Das Zeichen hat Ähnlichkeit mit dem Zeichen Tsui, Die Sammlung (Nr. 45). Dort handelt es sich um Sammlung des Getrennten, hier um Zerstreuung und Auflösung des trennenden Egoismus.",
+            "Die Auflösung zeigt den Weg, der zur Sammlung führt.",
+            "Zur Überwindung des Egoismus bedarf es religiöser Kräfte, gemeinsamer Feiern und großer Unternehmungen.",
+            "Nur wer selbst frei von egoistischen Nebengedanken ist, kann die Härte des Egoismus auflösen."
+        ]
+    },
+    "image": {
+        "description": "Der Wind fährt über das Wasser: das Bild der Auflösung. So opferten die alten Könige dem Herrn und bauten Tempel.",
+        "lesson": "Das erstarrende Herz muss durch fromme Rührung und die Ahnung des gemeinsamen Schöpfers gelöst werden.",
+        "warning": "Egoismus und Habsucht isolieren die Menschen."
+    },
+    "lines": [
+        {
+            "position": "Anfangs eine Sechs",
+            "text": "Er bringt Hilfe mit der Macht eines Pferdes.",
+            "interpretation": "Noch ehe die Trennung vollzogen ist, müssen die ersten Anfänge dazu überwunden werden. Rasches und starkes Handeln ist nötig, um Mißverständnisse und Mißtrauen aufzulösen."
+        },
+        {
+            "position": "Neun auf zweitem Platz",
+            "text": "Bei der Auflösung läuft er seiner Stütze zu. Die Reue schwindet.",
+            "interpretation": "Man muss die Anfänge von Entfremdung, Menschenhass und Mißstimmung in sich zerstreuen und sich seiner Stütze, einer gemäßigten und gerechten Beurteilung der Menschen, zuwenden."
+        },
+        {
+            "position": "Sechs auf drittem Platz",
+            "text": "Er löst sein Ich auf. Keine Reue.",
+            "interpretation": "Man muss die eigene Person vollkommen auf die Seite setzen und alles zerstreuen, was das Ich trennend um sich sammeln möchte. Nur durch Verzicht gewinnt man die Kraft zu großen Leistungen."
+        },
+        {
+            "position": "Sechs auf viertem Platz",
+            "text": "Er löst sich von seiner Schar. Erhabenes Heil ! Durch Auflösung folgt Anhäufung. Das ist etwas, an das Gewöhnliche nicht denken.",
+            "interpretation": "Für Aufgaben, die ins große Ganze gehen, muss man Privatfreundschaften beiseitelassen. Nur wer über den Parteien steht, leistet Ausschlaggebendes. Dieser Verzicht auf das Nahe bringt die Fernen."
+        },
+        {
+            "position": "Neun auf fünftem Platz",
+            "text": "Auflösend wie Schweiß sind seine lauten Rufe. Auflösung ! Ein König weilt ohne Makel.",
+            "interpretation": "In Zeiten allgemeiner Auflösung ist ein großer Gedanke der Organisationspunkt der Genesung. Ein suggestiver Gedanke ist eine wahre Erlösung, um die sich die Menschen sammeln können."
+        },
+        {
+            "position": "Oben eine Neun",
+            "text": "Er löst sein Blut auf. Weggehen, Sich fernhalten, Hinausgehen ist ohne Makel.",
+            "interpretation": "Das Auflösen des Blutes bedeutet, Gefahr zu vermeiden. Man rettet die Seinen, indem man ihnen hilft, rechtzeitig wegzugehen und sich fernzuhalten."
+        }
+    ]
+}

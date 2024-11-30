@@ -1,0 +1,65 @@
+{
+    "hexagram": {
+        "name": "DSING / DER BRUNNEN",
+        "subtitle": "Die Nahrungsspende",
+        "trigrams": {
+            "above": {
+                "name": "Kan",
+                "attributes": "das Abgründige, das Wasser"
+            },
+            "below": {
+                "name": "Sun",
+                "attributes": "das Sanfte, der Wind"
+            }
+        },
+        "meaning": {
+            "description": "Unten ist das Holz, oben das Wasser. Das Holz steigt in die Erde, um das Wasser heraufzuholen. Es ist das Bild des altchinesischen Wippbrunnens. Mit dem Holz sind nicht etwa die Eimer, die in alter Zeit von Ton waren, gemeint, sondern die Holzstange, durch deren Bewegungen das Wasser aus dem Brunnen gehoben wird. Das Bild deutet auch auf die Pflanzenwelt, die in ihren Adern das Wasser aus der Erde emporhebt. Der Brunnen, aus dem man Wasser schöpft, enthält außerdem den Gedanken der unerschöpflichen Nahrungsspende.",
+            "season": "Keine Information verfügbar"
+        }
+    },
+    "judgment": {
+        "description": "Der Brunnen. Man mag die Stadt wechseln, aber kann nicht den Brunnen wechseln. Er nimmt nicht ab und nimmt nicht zu. Sie kommen und gehen und schöpfen aus dem Brunnen. Wenn man beinahe das Brunnenwasser erreicht hat, aber noch nicht mit dem Seil drunten ist oder seinen Krug zerbricht so bringt das Unheil.",
+        "analysis": [
+            "Die Unveränderlichkeit der menschlichen Grundbedürfnisse trotz wechselnder politischer Systeme.",
+            "Die Notwendigkeit, bis zu den Grundlagen des Lebens vorzudringen, um eine funktionierende Gesellschaftsordnung zu schaffen.",
+            "Die Gefahr der Oberflächlichkeit und Fahrlässigkeit in der Organisation des Lebens."
+        ]
+    },
+    "image": {
+        "description": "Über dem Holz ist Wasser: das Bild des Brunnens.",
+        "lesson": "Der Edle ermuntert das Volk bei der Arbeit und ermahnt es, einander zu helfen.",
+        "warning": "Keine Information verfügbar"
+    },
+    "lines": [
+        {
+            "position": "Anfangs eine Sechs",
+            "text": "Der Schlamm des Brunnens wird nicht getrunken. Zu einem alten Brunnen kommen keine Tiere.",
+            "interpretation": "Wenn sich jemand in den sumpfigen Niederungen umhertreibt, so versinkt sein Leben im Schlamm. Ein solcher Mensch verliert seine Bedeutung für die Menschheit. Wer sich selbst wegwirft, zu dem kommen auch die andern nicht mehr. Niemand kümmert sich schließlich mehr um ihn."
+        },
+        {
+            "position": "Neun auf zweitem Platz",
+            "text": "Am Brunnenloch schießt man Fische. Der Krug ist zerbrochen und rinnt.",
+            "interpretation": "Das Wasser ist an sich klar. Aber man gebraucht es nicht. So halten sich nur Fische im Brunnen auf, und wer kommt, kommt nur, um Fische zu fangen; aber der Krug ist zerbrochen, so daß man die Fische nicht darin aufbewahren kann. Es wird eine Lage geschildert, da jemand an sich gute Gaben hätte; aber sie werden vernachlässigt. Niemand kümmert sich um ihn. Dadurch kommt er innerlich herunter. Er gibt sich mit gemeinen Menschen ab und kann nichts Tüchtiges mehr leisten."
+        },
+        {
+            "position": "Neun auf drittem Platz",
+            "text": "Der Brunnen ist gereinigt, aber man trinkt nicht daraus. Das ist meines Herzens Leid; denn man könnte daraus schöpfen. Wäre der König klar, so genösse man gemeinsam das Glück.",
+            "interpretation": "Hier ist ein tüchtiger Mann vorhanden. Er gleicht einem gereinigten Brunnen, dessen Wasser man trinken könnte. Aber er wird nicht gebraucht. Das ist das Leid der Menschen, die ihn kennen. Der Wunsch besteht, daß der Fürst es erfahre; dann wäre es für alle Beteiligten ein Glück."
+        },
+        {
+            "position": "Sechs auf viertem Platz",
+            "text": "Der Brunnen wird ausgemauert, kein Makel.",
+            "interpretation": "Wenn der Brunnen ausgemauert wird, so kann man ihn zwar solange nicht benützen, aber die Arbeit ist nicht vergebens; sie bewirkt, daß das Wasser klar bleibt. So gibt es im Leben auch Zeiten, in denen man sich selbst in Ordnung bringen muß. Während dieser Zeit kann man zwar nichts für andere leisten, aber sie ist dennoch wertvoll, weil man durch innere Ausbildung seine Kraft und Fähigkeiten steigert, so daß man nachher um so mehr leistet."
+        },
+        {
+            "position": "Neun auf fünftem Platz",
+            "text": "Im Brunnen ist ein klarer, kühler Quell, den man trinken kann.",
+            "interpretation": "Das ist ein guter Brunnen, der auf seinem Grunde eine Quelle lebendigen Wassers hat. Ein Mann, der solche Tugenden hat, ist zum Retter und Führer der Menschen geboren. Er hat das Wasser des Lebens. Dennoch fehlt das Zeichen: Heil. Beim Brunnen kommt alles darauf an, daß das Wasser geschöpft wird. Das beste Wasser ist für die Erfrischung der Menschen nur als Möglichkeit da, solange es nicht gehoben ist. So kommt es auch bei Führern der Menschheit darauf an, daß man aus ihrer Quelle trinkt, ihre Worte ins Leben überführt."
+        },
+        {
+            "position": "Oben eine Sechs",
+            "text": "Man schöpft aus dem Brunnen ohne Hinderung. Er ist zuverlässig. Erhabenes Heil !",
+            "interpretation": "Der Brunnen ist für alle da. Kein Verbot hemmt die Schöpfenden. Aber so viele auch kommen, sie finden, was sie brauchen; denn der Brunnen ist zuverlässig. Er hat eine Quelle und versiegt nicht; darum ist er für das ganze Land ein großes Heil: so der wirklich große Mann, der unerschöpflich reich ist an innerem Gut. Je mehr Menschen aus ihm schöpfen, desto größer wird sein Reichtum."
+        }
+    ]
+}

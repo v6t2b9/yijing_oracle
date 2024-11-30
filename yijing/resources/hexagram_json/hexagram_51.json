@@ -1,0 +1,65 @@
+{
+    "hexagram": {
+        "name": "LÜ / DAS AUFTRETEN",
+        "subtitle": "Das richtige Auftreten",
+        "trigrams": {
+            "above": {
+                "name": "Kien",
+                "attributes": "das Schöpferische, der Himmel"
+            },
+            "below": {
+                "name": "Dui",
+                "attributes": "das Heitere, der See"
+            }
+        },
+        "meaning": {
+            "description": "Das Auftreten bedeutet einerseits die richtige Art, sich zu benehmen. Oben ist der Himmel, der Vater, unten ist der See, die jüngste Tochter. Das zeigt den Unterschied von hoch und niedrig, wie er der Stille, dem richtigen Auftreten in der Gesellschaft zugrunde liegt. Auftreten heißt wörtlich: »treten auf etwas«. Das kleine »Heitere« tritt auf das große »Starke«. Die Bewegungsrichtung beider Urzeichen ist nach oben.",
+            "season": "Keine Information verfügbar"
+        }
+    },
+    "judgment": {
+        "description": "Auftreten auf des Tigers Schwanz. Er beißt den Menschen nicht. Gelingen.",
+        "analysis": [
+            "Die Lage ist eigentlich schwierig. Stärkstes und Schwächstes ist unmittelbar beisammen. Das Schwache geht hinter dem Starken her und macht sich mit ihm zu schaffen. Aber das Starke läßt es sich gefallen und tut ihm nichts zuleide, denn die Berührung ist heiter und nicht verletzend.",
+            "Die menschliche Lage ist, daß man es mit wilden, unzugänglichen Menschen zu tun hat. Man erreicht in diesem Falle seinen Zweck, wenn man sich in seinem Auftreten an die gute Sitte hält.",
+            "Gute, angenehme Formen des Auftretens führen auch reizbaren Menschen gegenüber zum Gelingen."
+        ]
+    },
+    "image": {
+        "description": "Oben der Himmel, unten der See: das Bild des Auftretens.",
+        "lesson": "So unterscheidet der Edle hoch und niedrig und festigt dadurch den Sinn des Volkes.",
+        "warning": "Wenn dagegen die äußeren Rangunterschiede einer inneren Berechtigung entsprechen und innere Würdigkeit der Maßstab für den äußeren Rang ist, dann beruhigen sich die Menschen dabei, und die Gesellschaft kommt in Ordnung."
+    },
+    "lines": [
+        {
+            "position": "Anfangs eine Neun",
+            "text": "Einfaches Auftreten. Fortschreiten ohne Makel.",
+            "interpretation": "Man befindet sich in einer Lage, in der man noch nicht gebunden ist durch die Verpflichtungen des Verkehrs. Wenn man einfach auftritt, bleibt man frei von gesellschaftlichen Verpflichtungen und kann ruhig den Neigungen des eigenen Herzens folgen, da man keine Anforderungen an die Menschen stellt, sondern zufrieden ist. Das Auftreten bedeutet nicht Stehenbleiben, sondern Fortschreiten."
+        },
+        {
+            "position": "Neun auf zweitem Platz",
+            "text": "Auftreten auf schlichter, ebener Bahn. Eines dunkeln Mannes Beharrlichkeit bringt Heil.",
+            "interpretation": "Es ist hier die Lage eines einsamen Weisen gezeichnet. Er hält sich von dem Weltgetriebe fern, sucht nichts, will von niemandem etwas und läßt sich nicht blenden von verlockenden Zielen. Er ist sich selbst treu und wandelt so auf ebener Straße unangefochten durchs Leben. Weil er genügsam ist und das Schicksal nicht herausfordert, bleibt er frei von Verwicklungen."
+        },
+        {
+            "position": "Sechs auf drittem Platz",
+            "text": "Ein Einäugiger kann sehen, ein Lahmer kann auftreten. Er tritt auf des Tigers Schwanz. Der beißt den Menschen. Unheil ! Ein Krieger handelt so für seinen großen Fürsten.",
+            "interpretation": "Ein Einäugiger kann wohl sehen, aber es reicht ihm nicht zum klaren Sehen. Ein Lahmer kann wohl auftreten, aber es reicht ihm nicht zum Vorankommen. Wenn jemand mit solchen Schwächen sich dennoch für stark hält und sich demgemäß in Gefahr begibt, so zieht er sich Unheil zu. Denn er begeht etwas, das über seine Kraft geht. Diese tollkühne Art, ohne Rücksicht auf die eigenen Kräfte voranzustürmen, mag höchstens für einen Krieger, der für seinen großen Fürsten kämpft, hingehen."
+        },
+        {
+            "position": "Neun auf viertem Platz",
+            "text": "Er tritt auf des Tigers Schwanz. Vorsicht und Behutsamkeit führt endlich zum Heil.",
+            "interpretation": "Es handelt sich um eine gefährliche Unternehmung. Es ist die innere Kraft vorhanden, sie zu bestehen. Aber die innere Kraft verbindet sich nach außen hin mit zögernder Vorsicht, im Gegensatz zur vorigen Linie, die innerlich schwach ist, aber nach außen hin vorandrängt. So ist der schließliche Erfolg sicher, der darin besteht, daß man seinen Willen erreicht, nämlich durch Weiterschreiten die Gefahr überwindet."
+        },
+        {
+            "position": "Neun auf fünftem Platz",
+            "text": "Entschlossenes Auftreten. Beharrlichkeit bei Bewußtsein der Gefahr.",
+            "interpretation": "Es handelt sich um den Herrn des ganzen Zeichens. Man sieht sich genötigt zu entschlossenem Auftreten. Dabei muß man sich aber der Gefahr bewußt bleiben, die mit solch einem entschlossenen Auftreten verbunden ist, namentlich, wenn man beharrlich dabei bleibt. Nur das Bewußtsein der Gefahr ermöglicht das Gelingen."
+        },
+        {
+            "position": "Oben eine Neun",
+            "text": "Blicke auf dein Auftreten und prüfe die günstigen Zeichen. Ist alles vollkommen, so kommt erhabenes Heil.",
+            "interpretation": "Das Werk ist zu Ende. Will man wissen, ob das Heil die Folge sein wird, so blicke man auf sein Auftreten zurück und auf die Folgen, die es gehabt. Sind die Wirkungen gut, so ist das Heil gewiß. Niemand kennt sich selbst. Nur aus den Folgen seines Tuns, aus den Früchten der Werke läßt sich ermessen, was man zu erwarten hat."
+        }
+    ]
+}

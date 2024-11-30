@@ -1,0 +1,61 @@
+{
+    "hexagram": {
+        "name": "DUI / DAS HEITERE, DER SEE",
+        "subtitle": "Die Freude",
+        "trigrams": {
+            "above": {
+                "name": "Dui",
+                "attributes": "das Heitere, der See"
+            },
+            "below": {
+                "name": "Dui",
+                "attributes": "das Heitere, der See"
+            }
+        },
+        "meaning": {
+            "description": "Wahre Freude beruht darauf, dass im Innern Festigkeit und Stärke vorhanden sind, die nach außen hin weich und milde auftreten.",
+            "season": "Keine Information verfügbar"
+        }
+    },
+    "judgment": {
+        "description": "Das Heitere. Gelingen. Günstig ist Beharrlichkeit. Die fröhliche Stimmung wirkt ansteckend, darum hat sie Erfolg. Aber die Freude bedarf als Grundlage der Beständigkeit, damit sie nicht zu unbeherrschter Lustigkeit ausartet. Wahrheit und Starke müssen im Herzen wohnen, während die Milde nach außen im Verkehr zutage tritt. Auf diese Weise nimmt man Gott und den Menschen gegenüber die rechte Stellung ein und erreicht etwas. Durch bloßes Einschüchtern ohne Milde laßt sich unter Umständen für den Augenblick etwas erreichen, aber nicht für die Dauer. Wenn man dagegen durch Freundlichkeit die Herzen der Menschen gewinnt, so bewirkt man, daß sie alle Beschwerden gern auf sich nehmen, ja wenn es sein muß, selbst den Tod nicht scheuen. So groß ist die Macht der Freude über die Menschen.",
+        "analysis": []
+    },
+    "image": {
+        "description": "Aufeinander beruhende Seen: das Bild des Heiteren. So tut sich der Edle mit seinen Freunden zusammen zur Besprechung und Einübung.",
+        "lesson": "Der:die Edle tut sich mit seinen Freunden zusammen zur Besprechung und Einübung.",
+        "warning": "Ein See verdunstet nach oben und erschöpft sich dadurch allmählich. Wenn aber zwei Seen miteinander in Verbindung sind, so erschöpfen sie sich nicht so leicht, weil einer den anderen bereichert."
+    },
+    "lines": [
+        {
+            "position": "Anfangs eine Neun",
+            "text": "Zufriedene Heiterkeit. Heil ! Eine stille, wortlose, in sich gesammelte Freude, die nichts von außen begehrt und mit allem zufrieden ist, bleibt frei von allen egoistischen Zu- und Abneigungen. In dieser Freiheit liegt das Heil, denn sie birgt die ruhige Sicherheit des in sich gefestigten Herzens.",
+            "interpretation": "Zu Beginn ist stille, zufriedene Freude der Schlüssel zum Heil."
+        },
+        {
+            "position": "Neun auf zweitem Platz",
+            "text": "Wahrhaftige Heiterkeit. Heil ! Die Reue schwindet.",
+            "interpretation": "Wahrhaftige Heiterkeit führt zum Heil und lässt Reue verschwinden."
+        },
+        {
+            "position": "Sechs auf drittem Platz",
+            "text": "Kommende Heiterkeit. Unheil",
+            "interpretation": "Freude, die von außen kommt, führt zu Unheil."
+        },
+        {
+            "position": "Neun auf viertem Platz",
+            "text": "Überlegte Heiterkeit ist nicht beruhigt. Nach Abtun der Fehler hat man Freude.",
+            "interpretation": "Wahre Heiterkeit und Ruhe findet man erst, nachdem man das Niedere von sich abgetan hat."
+        },
+        {
+            "position": "Neun auf fünftem Platz",
+            "text": "Wahrhaftigkeit gegen das Zersetzende ist gefährlich. Auch dem besten Menschen nahen sich gefährliche Elemente. Wenn man sich mit diesen einläßt, so wirkt ihr zersetzender Einfluß ganz langsam, aber sicher und zieht seine Gefahren unvermeidlich hintennach. Wer aber die Lage erkennt und die Gefahr zu durchschauen versteht, der weiß sich zu hüten und bleibt frei von Schaden.",
+            "interpretation": "Vorsicht vor gefährlichen Einflüssen, die selbst den Besten bedrohen können."
+        },
+        {
+            "position": "Oben eine Sechs",
+            "text": "Verführende Heiterkeit. Wenn man innerlich eitel ist, so lockt man die Freuden der Zerstreuung an und hat unter ihnen zu leiden (vgl. Sechs auf drittem Platz). Wenn man innerlich nicht gefestigt ist, so wirken die Freuden der Außenwelt, denen man sich nicht entzieht, so stark auf einen ein, daß man mitgerissen wird. Hier ist von Gefahr, von Heil oder Unheil nicht mehr die Rede. Man hat die Steuerung des Lebens aus der Hand gegeben, und es hängt vom Zufall und äußeren Einflüssen ab, was aus einem wird.",
+            "interpretation": "Verführerische Heiterkeit führt zur Aufgabe der Selbstkontrolle und zum Verlust der Lebensführung."
+        }
+    ]
+}
