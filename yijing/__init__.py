@@ -1,5 +1,7 @@
 # yijing/__init__.py
 
+from .managers import HexagramManager
+
 # First, import constants
 from .constants import (
     CHANGING_YIN,
@@ -64,4 +66,9 @@ __all__ = [
     'STABLE_YANG',
     'STABLE_YIN',
     'CHANGING_YANG'
+
+    # HexagramManager
+    'HexagramManager'
+    'HexagramContext'
+
 ]
