@@ -36,3 +36,6 @@ archiv/
 
 # Dateien
 .DS_Store
+
+# Alte Dateien
+archiv/
