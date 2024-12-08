@@ -11,17 +11,17 @@ class Settings(BaseSettings):
     """Zentrale Konfiguration für das Yijing Oracle System."""
 
     model_config = {
-        'protected_namespaces': ('settings_',),
-        'env_file': '.env',
-        'env_file_encoding': 'utf-8',
-        'case_sensitive': False
+        'protected_namespaces': ('settings_',), # Schützt Einstellungen vor Überschreibung
+        'env_file': '.env', # Standardmäßig .env-Datei verwenden
+        'env_file_encoding': 'utf-8', # Standardmäßig UTF-8 verwenden
+        'case_sensitive': False # Groß-/Kleinschreibung ignorieren
     }
 
     # API Configuration
-    api_key: str = Field(
-        default=None,
-        env='GENAI_API_KEY',
-        description='Google Generative AI API Key'
+    api_key: str = Field( # API-Key für Google Generative AI
+        default=None, # Standardmäßig nicht gesetzt
+        env='GENAI_API_KEY', # Umgebungsvariable
+        description='Google Generative AI API Key' # Beschreibung
     )
 
     # Model Configuration
