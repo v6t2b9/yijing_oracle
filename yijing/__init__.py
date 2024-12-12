@@ -32,7 +32,13 @@ from .models import (
 from .settings import Settings, settings
 
 # Finally, import oracle-related items
-from .oracle import YijingOracle, ask_oracle
+from .oracle import (YijingOracle,
+                     ask_oracle,
+                     generiere_erweiterte_weissagung,
+                     formatiere_weissagung_markdown,
+                     analysiere_hexagramm_eigenschaften,
+                     formatiere_analyse_markdown
+                    )
 
 __version__ = "0.1.0"
 __author__ = "JayKay"
@@ -42,6 +48,10 @@ __all__ = [
     # Core functionality
     'YijingOracle',
     'ask_oracle',
+    'generiere_erweiterte_weissagung',
+    'formatiere_weissagung_markdown',
+    'analysiere_hexagramm_eigenschaften',
+    'formatiere_analyse_markdown',
     
     # Models
     'Hypergram',

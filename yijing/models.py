@@ -161,15 +161,15 @@ class HypergramLine(BaseModel):
 
         Returns:
             str: Unicode symbol representing the line:
-                - '䷀' for yang lines
-                - '䷁' for yin lines
+                - '⚊' for yang lines
+                - '⚋' for yin lines
 
         Example:
             >>> line = HypergramLine(value=7)
             >>> line.to_unicode_symbol()
-            '䷀'
+            '⚊'
         """
-        return "䷀" if self.is_yang() else "䷁"
+        return "⚊" if self.is_yang() else "⚋"
 
 class HexagramLine(BaseModel):
     """
@@ -186,7 +186,7 @@ class HexagramLine(BaseModel):
     Example:
         >>> line = HexagramLine(value=1)
         >>> line.to_unicode_symbol()
-        '䷀'
+        '⚊'
     """
     value: Literal[0, 1] = Field(
         ...,
@@ -199,15 +199,15 @@ class HexagramLine(BaseModel):
 
         Returns:
             str: Unicode symbol representing the line:
-                - '䷀' for yang lines (value 1)
-                - '䷁' for yin lines (value 0)
+                - '⚊' for yang lines (value 1)
+                - '⚋' for yin lines (value 0)
 
         Example:
             >>> line = HexagramLine(value=1)
             >>> line.to_unicode_symbol()
-            '䷀'
+            '⚊'
         """
-        return "䷀" if self.value == 1 else "䷁"
+        return "⚊" if self.value == 1 else "⚋"
 
 class Hexagram(BaseModel):
     """
@@ -304,7 +304,7 @@ class Hexagram(BaseModel):
         Example:
             >>> hex = Hexagram(lines=[HexagramLine(value=1) for _ in range(6)])
             >>> hex.to_unicode_representation()
-            '䷀䷀䷀䷀䷀䷀'
+            '⚊⚊⚊⚊⚊⚊'
         """
         return ''.join(line.to_unicode_symbol() for line in self.lines)
 

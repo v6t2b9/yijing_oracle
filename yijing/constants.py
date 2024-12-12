@@ -32,5 +32,5 @@ TRANSFORMATION_VALUES: Final[Dict[str, Literal[0, 1]]] = {
 }
 
 # Unicode representations
-YIN_SYMBOL: Final[str] = "䷁"
-YANG_SYMBOL: Final[str] = "䷀"
+YIN_SYMBOL: Final[str] = "⚋"
+YANG_SYMBOL: Final[str] = "⚊"
