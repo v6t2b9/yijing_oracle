@@ -1,0 +1,88 @@
+// yijing/resources/schemas/hexagram.schema.json
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Hexagram",
+    "description": "Schema for I Ching hexagram definitions",
+    "type": "object",
+    "required": ["hexagram"],
+    "properties": {
+        "hexagram": {
+            "type": "object",
+            "required": ["name", "subtitle", "trigrams", "meaning"],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name des Hexagramms"
+                },
+                "subtitle": {
+                    "type": "string",
+                    "description": "Untertitel/Alternative Bezeichnung"
+                },
+                "trigrams": {
+                    "type": "object",
+                    "required": ["above", "below"],
+                    "properties": {
+                        "above": {
+                            "type": "object",
+                            "required": ["name", "attributes"],
+                            "properties": {
+                                "name": {"type": "string"},
+                                "attributes": {"type": "string"}
+                            }
+                        },
+                        "below": {
+                            "type": "object",
+                            "required": ["name", "attributes"],
+                            "properties": {
+                                "name": {"type": "string"},
+                                "attributes": {"type": "string"}
+                            }
+                        }
+                    }
+                },
+                "meaning": {
+                    "type": "object",
+                    "required": ["description"],
+                    "properties": {
+                        "description": {"type": "string"},
+                        "season": {"type": "string"}
+                    }
+                }
+            }
+        },
+        "judgment": {
+            "type": "object",
+            "required": ["description"],
+            "properties": {
+                "description": {"type": "string"},
+                "analysis": {
+                    "type": "array",
+                    "items": {"type": "string"}
+                }
+            }
+        },
+        "image": {
+            "type": "object",
+            "required": ["description"],
+            "properties": {
+                "description": {"type": "string"},
+                "lesson": {"type": "string"},
+                "warning": {"type": "string"}
+            }
+        },
+        "lines": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": ["position", "text", "interpretation"],
+                "properties": {
+                    "position": {"type": "string"},
+                    "text": {"type": "string"},
+                    "interpretation": {"type": "string"}
+                }
+            },
+            "minItems": 6,
+            "maxItems": 6
+        }
+    }
+}

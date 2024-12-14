@@ -1,18 +1,23 @@
-|____01_claude_yijing_v0.ipynb
-|____yijing
-| |____config.py
-| |____enums.py
-| |____hypergram.py
-| |____models.py
-| |____resources
-| | |____dialogue_system_prompt.txt
-| | |____yijing.txt
-| | |____single_system_prompt.txt
-| |______init__.py
-| |____utils.py
-| |____oracle.py
-| |____settings.py
-|____README.md
-|____.gitignore
-|____.env
-|____projektstruktur.txt
+yijing/
+├── __init__.py         # Exportiert die öffentliche API
+├── constants.py        # Alle Konstanten
+├── enums.py           # Alle Enums
+├── models/            # Package für alle Datenmodelle
+│   ├── __init__.py
+│   ├── lines.py       # HypergramLine, HexagramLine
+│   ├── hexagrams.py   # Hexagram, Hypergram
+│   └── contexts.py    # HexagramContext, ConsultationPrompt
+├── core/              # Package für Kernfunktionalität
+│   ├── __init__.py
+│   ├── oracle.py      # YijingOracle Hauptklasse
+│   ├── manager.py     # HexagramManager
+│   └── generator.py   # Funktionen wie cast_hypergram
+├── utils/             # Package für Hilfsfunktionen
+│   ├── __init__.py
+│   └── formatting.py  # Markdown-Formatierung etc.
+├── config/            # Package für Konfiguration
+│   ├── __init__.py
+│   ├── settings.py    # Settings-Klassen
+│   └── prompts/       # Prompt-Templates
+└── resources/         # Ressourcen-Verzeichnis
+    └── hexagram_json/ # JSON-Dateien
