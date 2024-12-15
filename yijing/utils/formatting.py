@@ -12,8 +12,76 @@ This module contains functions for:
 """
 
 from typing import Dict, Any, List
+from ..models import HypergramLine, Hypergram, HypergramData
+from ..models.contexts import HexagramContext
 
-def format_weissagung_markdown(weissagung: Dict[str, Any]) -> str:
+
+def generiere_erweiterte_weissagung(linien_werte: List[int]) -> Dict[str, Any]:
+    """
+    Generiert eine vollständige I Ging Weissagung mit allen verfügbaren Textinformationen.
+    Args:
+        linien_werte (List[int]): Eine Liste von Integer-Werten, die die Linien des Hypergramms darstellen.
+    Returns:
+        Dict[str, Any]: Ein Wörterbuch, das die vollständige Weissagung enthält, einschließlich:
+            - 'ursprung': Informationen über das ursprüngliche Hexagramm
+            - 'wandelnde_linien': Informationen über die wandelnden Linien
+            - 'ergebnis': Informationen über das resultierende Hexagramm
+    """
+    # Hypergramm-Linien erstellen
+    linien = [HypergramLine(value=wert) for wert in linien_werte]
+    hypergramm = Hypergram(lines=linien)
+    
+    # Hypergramm-Daten erstellen
+    hypergramm_daten = HypergramData(
+        hypergram=hypergramm,
+        old_hexagram=hypergramm.old_hexagram(),
+        new_hexagram=hypergramm.new_hexagram(),
+        changing_lines=hypergramm.changing_lines()
+    )
+    
+    # Manager erst hier importieren und initialisieren
+    from ..core.manager import HexagramManager
+    from pathlib import Path
+    resources_dir = Path(__file__).parent.parent / 'resources'
+    manager = HexagramManager(resources_dir)
+    
+    # Hexagramm-Nummern ermitteln
+    ursprungs_nummer = hypergramm_daten.old_hexagram.to_binary_number() + 1
+    ergebnis_nummer = hypergramm_daten.new_hexagram.to_binary_number() + 1
+    
+    # Kontext erstellen
+    kontext = manager.create_reading_context(
+        original_hex_num=ursprungs_nummer,
+        changing_lines=[i + 1 for i in hypergramm_daten.changing_lines],
+        resulting_hex_num=ergebnis_nummer
+    )
+    
+    return {
+        'ursprung': {
+            'nummer': ursprungs_nummer,
+            'name': kontext.original_hexagram['hexagram']['name'],
+            'darstellung': hypergramm_daten.old_hexagram.to_unicode_representation(),
+            'trigrams': kontext.original_hexagram['hexagram']['trigrams'],
+            'bedeutung': kontext.original_hexagram['hexagram']['meaning'],
+            'urteil': kontext.original_hexagram['judgment'],
+            'bild': kontext.original_hexagram['image']
+        },
+        'wandelnde_linien': {
+            'positionen': [i + 1 for i in hypergramm_daten.changing_lines],
+            'deutungen': kontext.get_relevant_line_interpretations()
+        },
+        'ergebnis': {
+            'nummer': ergebnis_nummer,
+            'name': kontext.resulting_hexagram['hexagram']['name'],
+            'darstellung': hypergramm_daten.new_hexagram.to_unicode_representation(),
+            'trigrams': kontext.resulting_hexagram['hexagram']['trigrams'],
+            'bedeutung': kontext.resulting_hexagram['hexagram']['meaning'],
+            'urteil': kontext.resulting_hexagram['judgment'],
+            'bild': kontext.resulting_hexagram['image']
+        }
+    }
+
+def formatiere_weissagung_markdown(weissagung: Dict[str, Any]) -> str:
     """Format a complete I Ching reading as Markdown text.
     
     Args:
@@ -25,6 +93,7 @@ def format_weissagung_markdown(weissagung: Dict[str, Any]) -> str:
     Returns:
         str: Formatted Markdown text of the reading
     """
+    # Die bestehende Implementierung bleibt gleich, nur der Name ändert sich
     ursprung = weissagung['ursprung']
     ergebnis = weissagung['ergebnis']
     

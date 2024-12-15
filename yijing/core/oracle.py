@@ -3,17 +3,18 @@
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Optional, Dict, Any, List
+from typing import Optional, Dict, Any, List  # List hinzugefügt
 import google.generativeai as genai
 import logging
 import os
 import json
-from .models import HypergramData, HexagramContext, HypergramLine, Hypergram
-from .hypergram import cast_hypergram
-from .managers import HexagramManager
-from .enums import ConsultationMode
-from .settings import Settings, settings
-from .utils import load_yijing_text, load_system_prompt
+
+from ..models import HypergramData, HexagramContext, HypergramLine, Hypergram
+from .generator import cast_hypergram
+from .manager import HexagramManager
+from ..enums import ConsultationMode
+from ..config import Settings, settings
+from ..utils.resource_loader import load_yijing_text, load_system_prompt
 
 # Verzeichnisse initialisieren
 project_dir = Path.cwd()
@@ -346,68 +347,6 @@ def ask_oracle(question: str, api_key: str = os.getenv("GENAI_API_KEY")) -> Dict
     """
     oracle = YijingOracle(api_key=api_key)
     return oracle.get_response(question)
-
-def generiere_erweiterte_weissagung(linien_werte: List[int]) -> Dict[str, Any]:
-    """
-    Generiert eine vollständige I Ging Weissagung mit allen verfügbaren Textinformationen.
-    Args:
-        linien_werte (List[int]): Eine Liste von Integer-Werten, die die Linien des Hypergramms darstellen.
-    Returns:
-        Dict[str, Any]: Ein Wörterbuch, das die vollständige Weissagung enthält, einschließlich:
-            - 'ursprung': Informationen über das ursprüngliche Hexagramm, einschließlich Nummer, Name, Darstellung, Trigramme, Bedeutung, Urteil und Bild.
-            - 'wandelnde_linien': Informationen über die wandelnden Linien, einschließlich Positionen und Deutungen.
-            - 'ergebnis': Informationen über das resultierende Hexagramm, einschließlich Nummer, Name, Darstellung, Trigramme, Bedeutung, Urteil und Bild.
-    """
-    # Hypergramm-Linien erstellen
-    linien = [HypergramLine(value=wert) for wert in linien_werte]
-    hypergramm = Hypergram(lines=linien)
-    
-    # Hypergramm-Daten erstellen
-    hypergramm_daten = HypergramData(
-        hypergram=hypergramm,
-        old_hexagram=hypergramm.old_hexagram(),
-        new_hexagram=hypergramm.new_hexagram(),
-        changing_lines=hypergramm.changing_lines()
-    )
-    
-    # Manager initialisieren
-    manager = HexagramManager(resources_dir)
-    
-    # Hexagramm-Nummern ermitteln
-    ursprungs_nummer = hypergramm_daten.old_hexagram.to_binary_number() + 1
-    ergebnis_nummer = hypergramm_daten.new_hexagram.to_binary_number() + 1
-    
-    # Kontext erstellen
-    kontext = manager.create_reading_context(
-        original_hex_num=ursprungs_nummer,
-        changing_lines=[i + 1 for i in hypergramm_daten.changing_lines],
-        resulting_hex_num=ergebnis_nummer
-    )
-    
-    return {
-        'ursprung': {
-            'nummer': ursprungs_nummer,
-            'name': kontext.original_hexagram['hexagram']['name'],
-            'darstellung': hypergramm_daten.old_hexagram.to_unicode_representation(),
-            'trigrams': kontext.original_hexagram['hexagram']['trigrams'],
-            'bedeutung': kontext.original_hexagram['hexagram']['meaning'],
-            'urteil': kontext.original_hexagram['judgment'],
-            'bild': kontext.original_hexagram['image']
-        },
-        'wandelnde_linien': {
-            'positionen': [i + 1 for i in hypergramm_daten.changing_lines],
-            'deutungen': kontext.get_relevant_line_interpretations()
-        },
-        'ergebnis': {
-            'nummer': ergebnis_nummer,
-            'name': kontext.resulting_hexagram['hexagram']['name'],
-            'darstellung': hypergramm_daten.new_hexagram.to_unicode_representation(),
-            'trigrams': kontext.resulting_hexagram['hexagram']['trigrams'],
-            'bedeutung': kontext.resulting_hexagram['hexagram']['meaning'],
-            'urteil': kontext.resulting_hexagram['judgment'],
-            'bild': kontext.resulting_hexagram['image']
-        }
-    }
 
 def formatiere_weissagung_markdown(weissagung: Dict[str, Any]) -> str:
     """

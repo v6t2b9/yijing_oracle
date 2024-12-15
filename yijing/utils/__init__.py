@@ -11,17 +11,14 @@ This package provides:
 - General helper utilities
 """
 
-from .formatting import format_weissagung_markdown, format_analyse_markdown
-from .resource_loader import (
-    load_yijing_text,
-    load_system_prompt,
-    load_hexagram_data
+from .formatting import (
+    formatiere_weissagung_markdown,
+    format_analyse_markdown,
+    generiere_erweiterte_weissagung
 )
 
 __all__ = [
-    'format_weissagung_markdown',
+    'formatiere_weissagung_markdown',
     'format_analyse_markdown',
-    'load_yijing_text',
-    'load_system_prompt',
-    'load_hexagram_data'
+    'generiere_erweiterte_weissagung'
 ]

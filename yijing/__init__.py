@@ -1,7 +1,5 @@
 # yijing/__init__.py
 
-from .managers import HexagramManager
-
 # First, import constants
 from .constants import (
     CHANGING_YIN,
@@ -23,22 +21,22 @@ from .enums import (
 from .models import (
     Hypergram,
     HypergramData,
-    HypergramLine,
+    HexagramContext,
     Hexagram,
-    HexagramLine
+    HexagramLine,
+    HypergramLine
+)
+
+# Import core functionality
+from .core.oracle import YijingOracle, ask_oracle
+from .core.generator import cast_hypergram
+from .utils.formatting import (
+    generiere_erweiterte_weissagung,
+    formatiere_weissagung_markdown
 )
 
 # Import settings
-from .settings import Settings, settings
-
-# Finally, import oracle-related items
-from .oracle import (YijingOracle,
-                     ask_oracle,
-                     generiere_erweiterte_weissagung,
-                     formatiere_weissagung_markdown,
-                     analysiere_hexagramm_eigenschaften,
-                     formatiere_analyse_markdown
-                    )
+from .config import Settings, settings
 
 __version__ = "0.1.0"
 __author__ = "JayKay"
@@ -48,17 +46,18 @@ __all__ = [
     # Core functionality
     'YijingOracle',
     'ask_oracle',
+    'cast_hypergram',
     'generiere_erweiterte_weissagung',
     'formatiere_weissagung_markdown',
-    'analysiere_hexagramm_eigenschaften',
-    'formatiere_analyse_markdown',
-    
+    'HexagramManager',
+
     # Models
     'Hypergram',
     'HypergramData',
-    'HypergramLine',
+    'HexagramContext',
     'Hexagram',
     'HexagramLine',
+    'HypergramLine',
     
     # Enums
     'ConsultationMode',
@@ -76,9 +75,4 @@ __all__ = [
     'STABLE_YANG',
     'STABLE_YIN',
     'CHANGING_YANG'
-
-    # HexagramManager
-    'HexagramManager'
-    'HexagramContext'
-
 ]

@@ -11,12 +11,13 @@ This package provides:
 - Reading generation (cast_hypergram)
 """
 
-from .oracle import YijingOracle
-from .manager import HexagramManager
+from .oracle import YijingOracle, ask_oracle
 from .generator import cast_hypergram
+from .manager import HexagramManager
 
 __all__ = [
     'YijingOracle',
-    'HexagramManager',
-    'cast_hypergram'
+    'ask_oracle',
+    'cast_hypergram',
+    'HexagramManager'
 ]
