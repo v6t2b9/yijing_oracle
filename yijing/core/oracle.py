@@ -115,7 +115,8 @@ class YijingOracle:
         genai.configure(api_key=self.api_key)  # Add this line
         
         # Resources setup
-        self.resources_path = resources_path or Path(__file__).parent / 'resources'
+        self.resources_path = resources_path or Path(__file__).parent.parent / 'resources'
+        self._verify_resource_structure()
         
         # Initialize hexagram manager
         self.hexagram_manager = HexagramManager(self.resources_path)
@@ -143,21 +144,43 @@ class YijingOracle:
             return Settings(**custom_settings)
         return settings
 
-
+    def _ensure_resource_structure(self) -> None:
+        """Create required resource directories if they don't exist."""
+        directories = [
+            self.resources_path,
+            self.resources_path / 'hexagram_json',
+            self.resources_path / 'schemas'
+        ]
+        
+        for directory in directories:
+            directory.mkdir(parents=True, exist_ok=True)
+            self.logger.debug(f"Ensured directory exists: {directory}")
+            
+    def _verify_resource_structure(self) -> None:
+        """Verify that all required resource files exist."""
+        required_files = [
+            'consultation_template.txt',
+            'system_prompt.txt'
+        ]
+        
+        for file in required_files:
+            file_path = self.resources_path / file
+            if not file_path.exists():
+                raise FileNotFoundError(
+                    f"Required resource file not found: {file_path}"
+                )
+            
     def _get_system_prompt(self) -> str:
         """
-        Retrieve and combine the system prompt and consultation template.
-        This method reads the content of 'system_prompt.txt' and 'consultation_template.txt'
-        from the resources path, combines them into a single string, and returns it.
-        If either file is not found, a FileNotFoundError is raised and logged.
+        Retrieve the appropriate system prompt based on consultation mode.
+
         Returns:
-            str: The combined system prompt and consultation template.
+            str: The system prompt text.
         Raises:
-            FileNotFoundError: If either 'system_prompt.txt' or 'consultation_template.txt' is not found.
-            Exception: If any other error occurs during file reading or processing.
+            FileNotFoundError: If the system prompt file is not found.
         """
         try:
-            # Load the consultation template
+            # Korrigierter Pfad: Verwende das resources_path aus den Settings
             template_path = self.resources_path / 'consultation_template.txt'
             if not template_path.exists():
                 raise FileNotFoundError(f"Consultation template not found at {template_path}")
@@ -165,7 +188,6 @@ class YijingOracle:
             with open(template_path, 'r', encoding='utf-8') as f:
                 consultation_template = f.read()
                 
-            # Load the system prompt
             system_prompt_path = self.resources_path / 'system_prompt.txt'
             if not system_prompt_path.exists():
                 raise FileNotFoundError(f"System prompt not found at {system_prompt_path}")
@@ -173,16 +195,8 @@ class YijingOracle:
             with open(system_prompt_path, 'r', encoding='utf-8') as f:
                 system_prompt = f.read()
                 
-            # Combine the prompts
-            combined_prompt = f"""{system_prompt}
-
-    CONSULTATION TEMPLATE
-    ==============================================================================
-
-    {consultation_template}"""
-
-            return combined_prompt
-            
+            return f"{system_prompt}\n\n{consultation_template}"
+                
         except Exception as e:
             self.logger.error(f"Error loading system prompt: {str(e)}")
             raise
