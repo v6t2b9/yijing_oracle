@@ -38,3 +38,19 @@ multi_line_output = 3
 python_version = "3.8"
 strict = true
 warn_unused_configs = true
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pytest = "^7.0.0"
+pytest-cov = "^4.1.0"
+pytest-asyncio = "^0.23.0"
+
+[tool.pytest.ini_options]
+addopts = """
+    --cov=yijing
+    --cov-report=term-missing
+    --cov-report=html
+    --cov-branch
+    """
+testpaths = ["tests"]
+asyncio_mode = "auto"
