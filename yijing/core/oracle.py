@@ -3,40 +3,45 @@
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Optional, Dict, Any, List  # List hinzugefügt
+from typing import Optional, Dict, Any, List
 import google.generativeai as genai
 import logging
 import os
 import json
+import ollama  # Importieren Sie Ollama
 
 from ..models import HypergramData, HexagramContext, HypergramLine, Hypergram
 from .generator import cast_hypergram
 from .manager import HexagramManager
 from ..enums import ConsultationMode
-from ..config import Settings, settings
+from ..config import Settings, settings, ModelType
 from ..utils.resource_loader import load_yijing_text, load_system_prompt
 
 # Verzeichnisse initialisieren
-project_dir = Path.cwd()
-resources_dir = project_dir / 'yijing' / 'resources'
+project_dir = Path.cwd() # Aktuelles Arbeitsverzeichnis
+resources_dir = project_dir / 'yijing' / 'resources' # Ressourcenverzeichnis
 
-@dataclass
-class OracleSettings:
-    """Settings for the Yijing Oracle"""
-    system_prompt: Optional[str] = None
-    yijing_text: Optional[str] = None
-    active_model: str = "models/gemini-1.5-flash"
-    consultation_mode: ConsultationMode = ConsultationMode.SINGLE
+@dataclass # Datenklasse für Oracle-Einstellungen
+class OracleSettings: # Klasse für Oracle-Einstellungen
+    """Settings for the Yijing Oracle."""
+    system_prompt: Optional[str] = None # System-Prompt
+    yijing_text: Optional[str] = None # Yijing-Text
+    active_model: str = "models/gemini-1.5-flash" # Aktives Modell
+    consultation_mode: ConsultationMode = ConsultationMode.SINGLE # Beratungsmodus
 
     def __post_init__(self):
-        """Load appropriate system prompt and Yijing text if not provided"""
+        """
+        Post-initialization method to load system prompt and Yijing text.
+
+        This method loads the system prompt and Yijing text if they are not provided.
+        """
         # Load the mode-specific system prompt if not provided
-        if self.system_prompt is None:
-            self.system_prompt = load_system_prompt(self.consultation_mode)
+        if self.system_prompt is None: # Wenn System-Prompt nicht vorhanden
+            self.system_prompt = load_system_prompt(self.consultation_mode) # System-Prompt laden
         
         # Load Yijing text if not provided
-        if self.yijing_text is None:
-            self.yijing_text = load_yijing_text()
+        if self.yijing_text is None: # Wenn Yijing-Text nicht vorhanden
+            self.yijing_text = load_yijing_text() # Yijing-Text laden
         
         # Combine system prompt with Yijing text
         self.system_prompt = f"""{self.system_prompt}
@@ -63,80 +68,78 @@ Yijing Text Reference:
 
 class YijingOracle:
     """
-    Oracle for generating I Ching readings and interpretations using GenAI.
+    The Yijing Oracle class for generating hexagram readings and responses.
+
+    Args:
+        api_key (str, optional): The API key for the Generative AI model. Defaults to None.
+        resources_path (Path, optional): The path to the resources directory. Defaults to None.
+        custom_settings (Dict[str, Any], optional): Custom settings to override the default settings. Defaults to None.
+
     Attributes:
-        settings (Settings): Configuration settings for the oracle.
-        logger (logging.Logger): Logger for logging messages.
-        api_key (str): API key for accessing GenAI services.
-        resources_path (Path): Path to the resources directory.
-        hexagram_manager (HexagramManager): Manager for handling hexagram data.
-        model (genai.GenerativeModel): Generative model for generating responses.
-        chat_session (Optional[genai.ChatSession]): Chat session for dialogue mode.
-    Methods:
-        __init__(api_key: Optional[str], resources_path: Optional[Path], custom_settings: Optional[Dict[str, Any]]):
-            Initializes the YijingOracle instance with the provided API key, resources path, and custom settings.
-        _initialize_settings(custom_settings: Optional[Dict[str, Any]]) -> Settings:
-            Initializes settings with either custom values or defaults.
-        _get_system_prompt() -> str:
-            Retrieves the appropriate system prompt based on consultation mode.
-        _setup_logging() -> logging.Logger:
-            Sets up logging configuration.
-        get_response(question: str) -> Dict[str, Any]:
-            Generates an oracle response to the given question.
-        _create_hexagram_context(hypergram_data: HypergramData) -> HexagramContext:
-            Creates a hexagram context from hypergram data.
-        _get_single_response(prompt: str) -> str:
-            Generates a single response.
-        _get_dialogue_response(prompt: str) -> str:
-            Generates a response using the chat session.
-        start_new_consultation():
-            Starts a new consultation session.
+        settings (Settings): The settings for the oracle.
+        logger (Logger): The logger for the oracle.
+        api_key (str): The API key for the Generative AI model.
+        resources_path (Path): The path to the resources directory.
+        hexagram_manager (HexagramManager): The hexagram manager for generating hexagram readings.
+        model (GenerativeModel): The generative model used for generating responses.
+        chat_session (ChatSession): The chat session for dialogue
+
+    Raises:
+        ValueError: If the API key is not provided for the GenAI model.
+        FileNotFoundError: If required resource files are not found.
+        RuntimeError: If an error occurs during initialization.
     """
     
     def __init__(
         self,
-        api_key: Optional[str] = None,
-        resources_path: Optional[Path] = None,
-        custom_settings: Optional[Dict[str, Any]] = None
+        api_key: Optional[str] = None, # API-Schlüssel
+        resources_path: Optional[Path] = None, # Pfad zu den Ressourcen
+        custom_settings: Optional[Dict[str, Any]] = None # Benutzerdefinierte Einstellungen
     ):
         # Initialize settings first
-        self.settings = self._initialize_settings(custom_settings)
-        self.logger = self._setup_logging()
+        self.settings = self._initialize_settings(custom_settings) # Einstellungen initialisieren
+        self.logger = self._setup_logging() # Logging initialisieren
         
-        # API key setup
-        self.api_key = api_key or os.getenv("GENAI_API_KEY")
-        if not self.api_key:
+        # API key setup for GenAI
+        self.api_key = api_key or os.getenv("GEMINI_API_KEY") # API-Schlüssel
+        if self.settings.model_type == ModelType.GENAI and not self.api_key: # Wenn GenAI verwendet wird und kein API-Schlüssel vorhanden ist
             raise ValueError(
-                "API key not found. Please provide via parameter or "
-                "environment variable 'GENAI_API_KEY'."
+                "API Schlüssel nicht gefunden. Bitte stellen Sie sicher, dass der API-Schlüssel bereitgestellt wird, "
+                "entweder über einen Parameter oder die Umgebungsvariable 'GEMINI_API_KEY'."
             )
         
-        # Configure GenAI first, before creating the model
-        genai.configure(api_key=self.api_key)  # Add this line
+        # Configure GenAI if GenAI is used
+        if self.settings.model_type == ModelType.GENAI: # Wenn GenAI verwendet wird
+            genai.configure(api_key=self.api_key) # GenAI konfigurieren
         
         # Resources setup
-        self.resources_path = resources_path or Path(__file__).parent.parent / 'resources'
-        self._verify_resource_structure()
+        self.resources_path = resources_path or Path(__file__).parent.parent / 'resources' # Pfad zu den Ressourcen ist das Verzeichnis 'resources' im übergeordneten Verzeichnis
+        self._verify_resource_structure() # Ressourcenstruktur überprüfen
         
         # Initialize hexagram manager
-        self.hexagram_manager = HexagramManager(self.resources_path)
+        self.hexagram_manager = HexagramManager(self.resources_path) # Hexagramm-Manager initialisieren
         
-        # Set up GenAI
+        # Set up GenAI or Ollama
         try:
-            # Remove the configure call from here since we did it above
-            self.model = genai.GenerativeModel(
-                model_name=self.settings.model_name,
-                system_instruction=self._get_system_prompt()
-            )
-            
-            # Initialize chat session for dialogue mode
-            self.chat_session = None
-            if self.settings.consultation_mode == ConsultationMode.DIALOGUE:
-                self.chat_session = self.model.start_chat()
+            if self.settings.model_type == ModelType.GENAI:
+                self.model = genai.GenerativeModel(
+                    model_name=self.settings.active_model,
+                    system_instruction=self._get_system_prompt()
+                )
+                
+                # Initialize chat session for dialogue mode
+                self.chat_session = None
+                if self.settings.consultation_mode == ConsultationMode.DIALOGUE:
+                    self.chat_session = self.model.start_chat()
+            elif self.settings.model_type == ModelType.OLLAMA:
+                # Keine spezifische Initialisierung für Ollama erforderlich
+                pass
+            else:
+                raise ValueError(f"Unbekannter Modelltyp: {self.settings.model_type}")
                 
         except Exception as e:
-            self.logger.error("Error during initialization", exc_info=True)
-            raise RuntimeError(f"Oracle initialization error: {str(e)}")
+            self.logger.error("Fehler bei der Initialisierung", exc_info=True)
+            raise RuntimeError(f"Oracle-Initialisierungsfehler: {str(e)}")
         
     def _initialize_settings(self, custom_settings: Optional[Dict[str, Any]] = None) -> Settings:
         """Initialize settings with either custom values or defaults."""
@@ -216,61 +219,62 @@ class YijingOracle:
 
     def get_response(self, question: str) -> Dict[str, Any]:
         """
-        Generate an oracle response to the given question.
+        Generiert eine Weissagung basierend auf der gewählten Modellart.
+
         Args:
-            question (str): The question to be answered by the oracle.
+            question (str): Die Frage, die an das Orakel gerichtet wird.
+
         Returns:
-            Dict[str, Any]: A dictionary containing the oracle's response, including:
-                - 'answer': The response generated by the oracle.
-                - 'hypergram_data': Data related to the generated hypergram.
-                - 'hexagram_context': Context of the hexagram, including:
-                    - 'original': Name of the original hexagram.
-                    - 'resulting': Name of the resulting hexagram.
-                    - 'changing_lines': The changing lines in the hexagram.
-                - 'model_used': The name of the model used for generating the response.
-                - 'timestamp': The timestamp when the response was generated.
-                - 'consultation_mode': The mode of consultation used.
+            Dict[str, Any]: Ein Wörterbuch, das die Weissagung enthält.
+
         Raises:
-            RuntimeError: If an error occurs during the generation of the response.
+            RuntimeError: Wenn ein Fehler bei der Generierung der Antwort auftritt.
         """
-        """Generate an oracle response to the given question."""
         try:
-            self.logger.info(f"Processing question in {self.settings.consultation_mode} mode")
+            self.logger.info(f"Verarbeite Frage im {self.settings.consultation_mode} Modus mit Modell {self.settings.model_type.value}")
             
-            # Generate hexagram data
+            # Hexagrammdaten generieren
             hypergram_data = cast_hypergram()
             
-            # Create hexagram context
+            # Hexagrammkontext erstellen
             context = self._create_hexagram_context(hypergram_data)
             
-            # Generate consultation prompt
+            # Beratungs-Prompt generieren
             prompt = self.hexagram_manager.get_consultation_prompt(
                 context=context,
                 question=question
             )
             
-            # Get response based on consultation mode
-            if self.settings.consultation_mode == ConsultationMode.SINGLE:
-                response = self._get_single_response(prompt)
+            if self.settings.model_type == ModelType.GENAI:
+                if self.settings.consultation_mode == ConsultationMode.SINGLE:
+                    response_text = self._get_single_response(prompt)
+                else:
+                    response_text = self._get_dialogue_response(prompt)
+            elif self.settings.model_type == ModelType.OLLAMA:
+                messages = [
+                    {'role': 'system', 'content': self.settings.system_prompt},
+                    {'role': 'user', 'content': prompt}
+                ]
+                response_text = self._get_ollama_response(messages)
             else:
-                response = self._get_dialogue_response(prompt)
+                raise ValueError(f"Unbekannter Modelltyp: {self.settings.model_type}")
             
             return {
-                'answer': response,
+                'answer': response_text,
                 'hypergram_data': hypergram_data.dict(),
                 'hexagram_context': {
                     'original': context.original_hexagram['hexagram']['name'],
                     'resulting': context.resulting_hexagram['hexagram']['name'],
                     'changing_lines': context.changing_lines
                 },
-                'model_used': self.settings.model_name,
+                'model_used': self.settings.active_model,
                 'timestamp': datetime.now().isoformat(),
                 'consultation_mode': self.settings.consultation_mode
             }
-            
+                
         except Exception as e:
-            self.logger.error("Error generating response", exc_info=True)
-            raise RuntimeError(f"Oracle error: {str(e)}")
+            self.logger.error("Fehler bei der Generierung der Antwort", exc_info=True)
+            raise RuntimeError(f"Oracle-Fehler: {str(e)}")
 
     def _create_hexagram_context(self, hypergram_data: HypergramData) -> HexagramContext:
         """
@@ -347,6 +351,25 @@ class YijingOracle:
             self.logger.info("Starting new consultation session")
             self.chat_session = self.model.start_chat()
 
+    def _get_ollama_response(self, messages: List[Dict[str, str]]) -> str:
+        """
+        Kommuniziert mit Ollama, um eine Antwort zu erhalten.
+
+        Args:
+            messages (List[Dict[str, str]]): Liste der Nachrichten im Chat-Format.
+
+        Returns:
+            str: Die Antwort von Ollama.
+        """
+        try:
+            response = ollama.chat(
+                model=self.settings.active_model,
+                messages=messages
+            )
+            return response['message']['content']
+        except Exception as e:
+            self.logger.error(f"Fehler bei der Kommunikation mit Ollama: {e}")
+            raise RuntimeError(f"Ollama-Fehler: {str(e)}")
 
 def ask_oracle(question: str, api_key: str = os.getenv("GENAI_API_KEY")) -> Dict[str, Any]:
     """

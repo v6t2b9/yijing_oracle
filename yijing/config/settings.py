@@ -14,9 +14,23 @@ import os
 from ..enums import ConsultationMode, LogLevel
 from ..constants import DEFAULT_MODEL
 
+from enum import Enum
+from dataclasses import dataclass
+
+class ModelType(Enum):
+    GENAI = "genai"
+    OLLAMA = "ollama"
+
 class Settings(BaseModel):
     """Global configuration settings for the I Ching oracle system."""
+
+    model_type: ModelType = ModelType.OLLAMA # ModelType.GEMINI
     
+    active_model: str = "models/gemini-1.5-flash"
+    consultation_mode: ConsultationMode = ConsultationMode.SINGLE
+    system_prompt: Optional[str] = None
+    yijing_text: Optional[str] = None
+
     model_config = {
         'protected_namespaces': ('settings_',),
         'env_file': '.env',
