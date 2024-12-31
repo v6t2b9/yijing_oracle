@@ -40,6 +40,15 @@ def mock_response():
     response.text = "Test Antwort"
     return response
 
+@pytest.fixture
+async def mock_response():
+    """Erzeugt eine Mock-Antwort für Modell-Responses."""
+    response = MagicMock()
+    response.text = "Test Antwort"
+    response.parts = [MagicMock(text="Test Antwort")]
+    return response
+
+
 # Tests für GenAI-Modell-Interaktionen
 @pytest.mark.asyncio
 async def test_get_model_response_async_success(oracle, mock_response):
@@ -193,6 +202,8 @@ async def test_get_response_async_integration(oracle, mock_response):
     Modellantwort.
     """
     # Mocks für alle benötigten Komponenten
+    oracle.api_key = "test-api-key"
+    oracle.settings.model_type = ModelType.GENAI
     oracle.model.generate_content_async = AsyncMock(return_value=mock_response)
     oracle._cast_hypergram_async = AsyncMock()
     oracle._create_hexagram_context_async = AsyncMock()

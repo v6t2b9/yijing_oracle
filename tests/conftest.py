@@ -1,4 +1,10 @@
- tests/conftest.py
+# tests/conftest.py
+
+"""
+Test Configuration and Fixtures
+=============================
+Provides shared test fixtures and configuration for the test suite.
+"""
 
 import pytest
 import os
@@ -59,27 +65,22 @@ def test_hexagram_data(test_resources_dir):
     
     return test_data
 
-@pytest.fixture(scope="function")
-def mock_oracle_environment(test_resources_dir):
-    """Setzt eine kontrollierte Testumgebung für das Oracle auf."""
-    env_vars = {
-        "GENAI_API_KEY": "test-api-key",
-        "OLLAMA_HOST": "http://test-host",
-        "DEBUG": "True",
-        "LOG_LEVEL": "DEBUG"
+# tests/conftest.py
+
+@pytest.fixture
+async def oracle(mock_oracle_environment):
+    """Erzeugt eine Oracle-Testinstanz mit Mock-Einstellungen."""
+    custom_settings = {
+        "model_type": ModelType.GENAI,
+        "active_model": "test-model",
+        "consultation_mode": ConsultationMode.SINGLE,
+        # Mock-API-Key für Tests
+        "api_key": "test-api-key"
     }
     
-    # Backup der existierenden Umgebungsvariablen
-    old_env = {}
-    for key in env_vars:
-        old_env[key] = os.environ.get(key)
-        os.environ[key] = env_vars[key]
-    
-    yield env_vars
-    
-    # Stelle ursprüngliche Umgebung wieder her
-    for key, value in old_env.items():
-        if value is None:
-            del os.environ[key]
-        else:
-            os.environ[key] = value
+    oracle = YijingOracle(
+        api_key="test-api-key",
+        custom_settings=custom_settings
+    )
+    oracle.model = AsyncMock()  # Mock das Modell für Tests
+    return oracle

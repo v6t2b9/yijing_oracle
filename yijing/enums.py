@@ -75,10 +75,22 @@ class LogLevel(str, Enum):
     ERROR = "ERROR"
     CRITICAL = "CRITICAL"
 
+class ModelType(str, Enum):
+    """
+    Defines the type of model to be used for generating responses.
+
+    Attributes:
+        GENAI (str): Use Google's Generative AI model
+        OLLAMA (str): Use Ollama model
+    """
+    GENAI = "genai"
+    OLLAMA = "ollama"
+
 __all__ = [
     'ConsultationMode',
     'LineType',
     'HexagramComponent',
     'ResourceType',
     'LogLevel'
+    'ModelType'
 ]

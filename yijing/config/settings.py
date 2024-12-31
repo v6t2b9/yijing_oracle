@@ -12,14 +12,18 @@ from pathlib import Path
 import os
 
 from ..enums import ConsultationMode, LogLevel
+from ..enums import ModelType  # Importiere ModelType aus enums statt lokaler Definition
+
 from ..constants import DEFAULT_MODEL
 
 from enum import Enum
 from dataclasses import dataclass
 
+"""
 class ModelType(Enum):
     GENAI = "genai"
     OLLAMA = "ollama"
+"""
 
 class Settings(BaseModel):
     """Global configuration settings for the I Ching oracle system."""
@@ -97,6 +101,13 @@ class Settings(BaseModel):
         description='Enable debug mode'
     )
 
+    # Ollama Settings
+    ollama_host: str = Field(
+        default="http://localhost:11434",
+        env='OLLAMA_HOST',
+        description='Ollama API host address'
+    )
+    
     def model_post_init(self, __context: Any) -> None:
         """Initialize derived settings after model creation."""
         # Set default paths relative to base_dir if not explicitly set
