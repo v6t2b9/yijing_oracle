@@ -61,29 +61,5 @@ def validate_hexagram_files() -> List[str]:
     return errors
 
 def validate_all_resources() -> bool:
-    """Validate all resource files.
-    
-    Returns:
-        bool: True if all validations pass
-    """
-    all_valid = True
-    
-    # Validate hexagrams
-    hex_errors = validate_hexagram_files()
-    if hex_errors:
-        all_valid = False
-        logger.error("Hexagram validation errors:")
-        for error in hex_errors:
-            logger.error(error)
-    
-    # Hier können weitere Validierungen hinzugefügt werden
-    # z.B. für Trigramme, Interpretationstexte etc.
-    
-    return all_valid
-
-if __name__ == '__main__':
-    logging.basicConfig(level=logging.INFO)
-    if validate_all_resources():
-        print("All resources valid!")
-    else:
-        print("Validation errors found. Check logs for details.")
+    """Validate all resource files."""
+    return len(validate_hexagram_files()) == 0

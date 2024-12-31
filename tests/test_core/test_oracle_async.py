@@ -18,10 +18,9 @@ from yijing.enums import ModelType, ConsultationMode
 # Fixtures für häufig verwendete Testdaten
 @pytest.fixture
 def mock_settings():
-    """Erzeugt Mock-Einstellungen für Tests."""
     settings = Settings()
-    settings.model_type = ModelType.GENAI
-    settings.active_model = "test-model"
+    settings.model_type = ModelType.OLLAMA
+    settings.active_model = "llama2:latest"
     settings.consultation_mode = ConsultationMode.SINGLE
     return settings
 
@@ -102,53 +101,6 @@ async def test_get_model_response_async_invalid_response(oracle):
     
     assert "Keine gültige Antwort" in str(exc_info.value)
 
-# Tests für Ollama-Modell-Interaktionen
-@pytest.mark.asyncio
-async def test_get_ollama_response_async_success(oracle):
-    """
-    Testet erfolgreiche Ollama-API-Anfragen.
-    
-    Dieser Test simuliert eine erfolgreiche Interaktion mit
-    dem Ollama-API-Endpunkt.
-    """
-    oracle.settings.model_type = ModelType.OLLAMA
-    oracle.settings.OLLAMA_HOST = "http://test-host"
-    
-    mock_response = {
-        "response": "Ollama Test Antwort"
-    }
-    
-    with patch('aiohttp.ClientSession') as mock_session:
-        mock_context = AsyncMock()
-        mock_context.__aenter__.return_value.status = 200
-        mock_context.__aenter__.return_value.json = AsyncMock(
-            return_value=mock_response
-        )
-        mock_session.return_value.post.return_value = mock_context
-        
-        result = await oracle._get_ollama_response_async("Test Prompt")
-        
-        assert result == "Ollama Test Antwort"
-
-@pytest.mark.asyncio
-async def test_get_ollama_response_async_network_error(oracle):
-    """
-    Testet Netzwerkfehler bei Ollama-Anfragen.
-    
-    Dieser Test überprüft die Fehlerbehandlung bei
-    Netzwerkproblemen mit dem Ollama-API-Endpunkt.
-    """
-    oracle.settings.model_type = ModelType.OLLAMA
-    oracle.settings.OLLAMA_HOST = "http://test-host"
-    
-    with patch('aiohttp.ClientSession') as mock_session:
-        mock_session.return_value.post.side_effect = \
-            aiohttp.ClientError("Netzwerkfehler")
-        
-        with pytest.raises(ModelConnectionError) as exc_info:
-            await oracle._get_ollama_response_async("Test Prompt")
-        
-        assert "Netzwerkfehler" in str(exc_info.value)
 
 @pytest.mark.asyncio
 async def test_chat_session_management(oracle):

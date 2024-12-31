@@ -139,7 +139,7 @@ class YijingOracle:
         ]
         
         for file in required_files:
-            file_path = self.resources_path / file
+            file_path = self.resources_path / file or self.resources_path / 'prompts' / file
             if not file_path.exists():
                 raise FileNotFoundError(
                     f"Required resource file not found: {file_path}"
@@ -490,11 +490,9 @@ class YijingOracle:
                     
             # Exponentielles Backoff für Wiederholungsversuche
             await asyncio.sleep(retry_delay * (2 ** attempt))
-
+    
     def _get_ollama_response(self, prompt: str) -> str:
-        """
-        Kommuniziert mit Ollama, um eine Antwort zu erhalten.
-        """
+        """Kommuniziert mit Ollama."""
         try:
             messages = [
                 {
@@ -512,21 +510,20 @@ class YijingOracle:
                 messages=messages
             )
             
-            if not isinstance(response, dict) or 'message' not in response:
-                raise ModelResponseError(
-                    model_name=self.settings.active_model,
-                    response="Ungültiges Antwortformat von Ollama"
-                )
-                
             return response['message']['content']
-            
+                
         except Exception as e:
             self.logger.error(f"Fehler bei der Kommunikation mit Ollama: {e}")
             raise ModelResponseError(
                 model_name=self.settings.active_model,
                 response=str(e)
             )
-        
+
+    # ENTFERNEN: Diese Prüfung in __init__
+    if self.settings.model_type == ModelType.OLLAMA:
+        if not self.settings.OLLAMA_HOST:  # Diese Prüfung entfernen
+            raise ConfigurationError("Ollama-Host nicht konfiguriert")
+            
     async def _handle_chat_session_async(self) -> None:
         """
         Verwaltet die Chat-Session asynchron.
@@ -716,6 +713,7 @@ class YijingOracle:
         try:
             # Datei-I/O sollte asynchron sein
             resources_dir = self.resources_path / 'hexagram_json'
+            prompt_dir = self.resources_path / 'prompts'
             hexagram_file = resources_dir / f'hexagram_{number:02d}.json'
             
             async with aiofiles.open(hexagram_file, mode='r', encoding='utf-8') as f:

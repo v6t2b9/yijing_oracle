@@ -16,36 +16,22 @@ logger = logging.getLogger(__name__)
 
 class Hexagram(BaseModel):
     """A collection of six fixed lines representing a hexagram."""
-    
     lines: List[HexagramLine] = Field(
-        ...,
+        ..., 
         description="List of exactly six lines forming the hexagram"
     )
 
     @field_validator('lines')
     def validate_lines(cls, v: List[HexagramLine]) -> List[HexagramLine]:
-        """Validate that the hexagram has exactly six lines."""
-        logger.debug("Validating hexagram lines")
         if len(v) != HEXAGRAM_LINE_COUNT:
             raise ValueError("A hexagram must contain exactly 6 lines")
         return v
 
-    def yin_yang_count(self) -> Dict[str, int]:
-        """Count the number of yin and yang lines in the hexagram."""
-        logger.debug("Counting yin and yang lines")
-        return {
-            'yin': sum(1 for line in self.lines if line.value == 0),
-            'yang': sum(1 for line in self.lines if line.value == 1)
-        }
-
     def to_binary_number(self) -> int:
-        """Convert the hexagram to its binary number representation (0-63)."""
         return int(''.join(str(line.value) for line in self.lines), 2)
 
     def to_unicode_representation(self) -> str:
-        """Get the Unicode string representation of the hexagram."""
         return ''.join(line.to_unicode_symbol() for line in self.lines)
-
 
 class Hypergram(BaseModel):
     """A collection of six potentially changing lines."""

@@ -47,13 +47,9 @@ def cast_hypergram() -> HypergramData:
         HypergramLine(value=random.choice([6, 7, 8, 9])) 
         for _ in range(6)
     ]
-    logger.debug(f"Generated line values: {[line.value for line in lines]}")
     
-    # Create the hypergram
     hypergram = Hypergram(lines=lines)
-    logger.debug(f"Created hypergram with {len(hypergram.changing_lines())} changing lines")
     
-    # Create and return the complete reading data
     return HypergramData(
         hypergram=hypergram,
         old_hexagram=hypergram.old_hexagram(),
