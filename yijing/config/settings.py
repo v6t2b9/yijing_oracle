@@ -113,10 +113,11 @@ class Settings(BaseModel):
         # Set default paths relative to base_dir if not explicitly set
         if self.resources_dir is None:
             self.resources_dir = self.base_dir / 'resources'
-            
+                
         if self.prompt_templates_dir is None:
-            self.prompt_templates_dir = self.base_dir / 'config' / 'prompts'
-            
+            # ÄNDERN diese Zeile:
+            self.prompt_templates_dir = self.resources_dir / 'prompts'  # Neuer Pfad
+                
         if self.log_file is None and not self.debug:
             self.log_file = self.base_dir / 'logs' / 'yijing.log'
 

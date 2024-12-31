@@ -21,11 +21,9 @@ from ..enums import ConsultationMode
 from ..config import Settings, settings, ModelType
 from ..utils.resource_loader import load_yijing_text, load_system_prompt
 
-import aiohttp
 import json
 #from typing import Dict, Any, Optional
 
-import asyncio
 from datetime import datetime
 from ..exceptions import (
     ModelConnectionError,
@@ -39,50 +37,6 @@ from ..exceptions import (
 project_dir = Path.cwd() # Aktuelles Arbeitsverzeichnis
 resources_dir = project_dir / 'yijing' / 'resources' # Ressourcenverzeichnis
 
-@dataclass # Datenklasse für Oracle-Einstellungen
-class OracleSettings: # Klasse für Oracle-Einstellungen
-    """Settings for the Yijing Oracle."""
-    system_prompt: Optional[str] = None # System-Prompt
-    yijing_text: Optional[str] = None # Yijing-Text
-    active_model: str = "models/gemini-1.5-flash" # Aktives Modell
-    consultation_mode: ConsultationMode = ConsultationMode.SINGLE # Beratungsmodus
-
-    def __post_init__(self):
-        """
-        Post-initialization method to load system prompt and Yijing text.
-
-        This method loads the system prompt and Yijing text if they are not provided.
-        """
-        # Load the mode-specific system prompt if not provided
-        if self.system_prompt is None: # Wenn System-Prompt nicht vorhanden
-            self.system_prompt = load_system_prompt(self.consultation_mode) # System-Prompt laden
-        
-        # Load Yijing text if not provided
-        if self.yijing_text is None: # Wenn Yijing-Text nicht vorhanden
-            self.yijing_text = load_yijing_text() # Yijing-Text laden
-        
-        # Combine system prompt with Yijing text
-        self.system_prompt = f"""{self.system_prompt}
-
-Yijing Text Reference:
-{self.yijing_text}
-"""
-    
-    @classmethod
-    def from_json(cls, path: Path) -> 'OracleSettings':
-        """
-        Load settings from a JSON file.
-
-        Args:
-            path (Path): The path to the JSON file containing the settings.
-
-        Returns:
-            OracleSettings: An instance of OracleSettings populated with data from the JSON file.
-        """
-        """Load settings from JSON file"""
-        with open(path) as f:
-            data = json.load(f)
-        return cls(**data)
 
 class YijingOracle:
     """
@@ -191,37 +145,34 @@ class YijingOracle:
                     f"Required resource file not found: {file_path}"
                 )
             
+
     def _get_system_prompt(self) -> str:
         """
-        Retrieve the appropriate system prompt based on consultation mode.
+        Lädt und kombiniert die Prompt-Templates.
 
         Returns:
-            str: The system prompt text.
+            str: Der kombinierte System-Prompt.
+            
         Raises:
-            FileNotFoundError: If the system prompt file is not found.
+            FileNotFoundError: Wenn ein Template nicht gefunden wird.
         """
         try:
-            # Korrigierter Pfad: Verwende das resources_path aus den Settings
-            template_path = self.resources_path / 'consultation_template.txt'
-            if not template_path.exists():
-                raise FileNotFoundError(f"Consultation template not found at {template_path}")
-                
-            with open(template_path, 'r', encoding='utf-8') as f:
-                consultation_template = f.read()
-                
-            system_prompt_path = self.resources_path / 'system_prompt.txt'
-            if not system_prompt_path.exists():
-                raise FileNotFoundError(f"System prompt not found at {system_prompt_path}")
-                
-            with open(system_prompt_path, 'r', encoding='utf-8') as f:
-                system_prompt = f.read()
-                
-            return f"{system_prompt}\n\n{consultation_template}"
-                
+            # Lade die Basis-Templates
+            system_template = self.settings.load_prompt_template('system_prompt')
+            consultation_template = self.settings.load_prompt_template('consultation_template')
+            
+            # Lade das mode-spezifische Template
+            mode_template = self.settings.load_prompt_template(
+                f"{self.settings.consultation_mode.value}_mode_prompt"
+            )
+            
+            # Kombiniere die Templates
+            return f"{system_template}\n\n{mode_template}\n\n{consultation_template}"
+                    
         except Exception as e:
-            self.logger.error(f"Error loading system prompt: {str(e)}")
+            self.logger.error(f"Fehler beim Laden der Prompt-Templates: {str(e)}")
             raise
-
+        
     def _setup_logging(self) -> logging.Logger:
         """Set up logging configuration."""
         logger = logging.getLogger(__name__)
@@ -238,19 +189,6 @@ class YijingOracle:
     def get_response(self, question: str) -> Dict[str, Any]:
         """
         Generiert eine Weissagung basierend auf der Frage und dem gewählten Modell.
-        
-        Args:
-            question (str): Die Frage an das Orakel
-            
-        Returns:
-            Dict[str, Any]: Ein Dictionary mit der Weissagung und zusätzlichen Informationen
-            
-        Raises:
-            ModelConnectionError: Wenn keine Verbindung zum KI-Modell hergestellt werden kann
-            ModelResponseError: Wenn die Antwort des Modells ungültig ist
-            ResourceNotFoundError: Wenn erforderliche Ressourcen nicht gefunden werden
-            HexagramTransformationError: Wenn bei der Hexagramm-Transformation ein Fehler auftritt
-            ConfigurationError: Wenn die Konfiguration ungültig ist
         """
         try:
             self.logger.info(
@@ -277,7 +215,7 @@ class YijingOracle:
                     resource_path=str(e)
                 ) from e
             
-            # Generiere Beratungs-Prompt
+            # Generiere Prompt
             prompt = self.hexagram_manager.get_consultation_prompt(
                 context=context,
                 question=question
@@ -289,11 +227,6 @@ class YijingOracle:
                     response_text = self._get_model_response(prompt)
                 else:
                     response_text = self._get_ollama_response(prompt)
-            except ConnectionError as e:
-                raise ModelConnectionError(
-                    model_name=self.settings.active_model,
-                    details=str(e)
-                ) from e
             except Exception as e:
                 raise ModelResponseError(
                     model_name=self.settings.active_model,
@@ -340,7 +273,7 @@ class YijingOracle:
             raise ConfigurationError(
                 f"Ressourcen-Verzeichnis nicht gefunden: {self.resources_path}"
             )
-            
+        
     def _validate_response(self, response: Dict[str, Any]) -> None:
         """
         Überprüft die Gültigkeit der generierten Antwort.
@@ -558,99 +491,42 @@ class YijingOracle:
             # Exponentielles Backoff für Wiederholungsversuche
             await asyncio.sleep(retry_delay * (2 ** attempt))
 
-    async def _get_ollama_response_async(self, prompt: str) -> str:
+    def _get_ollama_response(self, prompt: str) -> str:
         """
-        Holt asynchron eine Antwort vom Ollama-Modell.
-        
-        Diese Methode implementiert die asynchrone Kommunikation mit dem
-        Ollama-API-Endpunkt. Sie nutzt aiohttp für asynchrone HTTP-Anfragen
-        und implementiert eine robuste Fehlerbehandlung.
-        
-        Args:
-            prompt (str): Der zu verarbeitende Prompt
-            
-        Returns:
-            str: Die generierte Antwort des Modells
-            
-        Raises:
-            ModelConnectionError: Bei Verbindungsproblemen mit Ollama
-            ModelResponseError: Bei ungültigen oder fehlenden Antworten
-            ConfigurationError: Bei Konfigurationsproblemen
+        Kommuniziert mit Ollama, um eine Antwort zu erhalten.
         """
-        if not self.settings.OLLAMA_HOST:
-            raise ConfigurationError("Ollama-Host nicht konfiguriert")
+        try:
+            messages = [
+                {
+                    "role": "system",
+                    "content": self._get_system_prompt()
+                },
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ]
+
+            response = ollama.chat(
+                model=self.settings.active_model,
+                messages=messages
+            )
             
-        endpoint = f"{self.settings.OLLAMA_HOST}/api/generate"
-        max_retries = 3
-        retry_delay = 1.0
-        
-        # Bereite die Nachricht vor
-        messages = [
-            {'role': 'system', 'content': self.settings.system_prompt},
-            {'role': 'user', 'content': prompt}
-        ]
-        
-        async with aiohttp.ClientSession() as session:
-            for attempt in range(max_retries):
-                try:
-                    async with asyncio.timeout(60):  # 60 Sekunden Timeout
-                        async with session.post(
-                            endpoint,
-                            json={
-                                'model': self.settings.active_model,
-                                'messages': messages,
-                                'stream': False  # Keine Stream-Verarbeitung
-                            }
-                        ) as response:
-                            if response.status != 200:
-                                error_text = await response.text()
-                                raise ModelResponseError(
-                                    model_name=self.settings.active_model,
-                                    response=f"HTTP {response.status}: {error_text}"
-                                )
-                                
-                            try:
-                                data = await response.json()
-                            except json.JSONDecodeError as e:
-                                raise ModelResponseError(
-                                    model_name=self.settings.active_model,
-                                    response=f"Ungültige JSON-Antwort: {str(e)}"
-                                )
-                                
-                            # Extrahiere und validiere die Antwort
-                            if not data or 'response' not in data:
-                                raise ModelResponseError(
-                                    model_name=self.settings.active_model,
-                                    response="Fehlender 'response' Schlüssel in Antwort"
-                                )
-                                
-                            return data['response']
-                            
-                except asyncio.TimeoutError:
-                    self.logger.warning(
-                        f"Zeitüberschreitung bei Ollama-Anfrage "
-                        f"(Versuch {attempt + 1}/{max_retries})"
-                    )
-                    if attempt == max_retries - 1:
-                        raise ModelConnectionError(
-                            model_name=self.settings.active_model,
-                            details="Wiederholte Zeitüberschreitungen bei Ollama-Anfragen"
-                        )
-                        
-                except aiohttp.ClientError as e:
-                    self.logger.warning(
-                        f"Netzwerkfehler bei Ollama-Anfrage "
-                        f"(Versuch {attempt + 1}/{max_retries}): {e}"
-                    )
-                    if attempt == max_retries - 1:
-                        raise ModelConnectionError(
-                            model_name=self.settings.active_model,
-                            details=f"Netzwerkfehler: {str(e)}"
-                        )
-                        
-                # Exponentielles Backoff
-                await asyncio.sleep(retry_delay * (2 ** attempt))
+            if not isinstance(response, dict) or 'message' not in response:
+                raise ModelResponseError(
+                    model_name=self.settings.active_model,
+                    response="Ungültiges Antwortformat von Ollama"
+                )
                 
+            return response['message']['content']
+            
+        except Exception as e:
+            self.logger.error(f"Fehler bei der Kommunikation mit Ollama: {e}")
+            raise ModelResponseError(
+                model_name=self.settings.active_model,
+                response=str(e)
+            )
+        
     async def _handle_chat_session_async(self) -> None:
         """
         Verwaltet die Chat-Session asynchron.

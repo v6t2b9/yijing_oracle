@@ -1,0 +1,9 @@
+DIALOGMODUS-SPEZIFISCHE ASPEKTE
+==============================================================================
+
+Im Dialogmodus:
+- Führe ein interaktives Gespräch mit der fragenden Person
+- Stelle gezielte Rückfragen für tieferes Verständnis
+- Biete Raum für Klärungsfragen
+- Passe die Beratung basierend auf dem Dialog an
+- Behalte den roten Faden der Beratung im Blick
