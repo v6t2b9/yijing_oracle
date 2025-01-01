@@ -64,34 +64,42 @@ class YijingOracle:
     
     def __init__(
         self,
-        api_key: Optional[str] = None, # API-Schlüssel
-        resources_path: Optional[Path] = None, # Pfad zu den Ressourcen
-        custom_settings: Optional[Dict[str, Any]] = None # Benutzerdefinierte Einstellungen
+        api_key: Optional[str] = None,
+        resources_path: Optional[Path] = None,
+        custom_settings: Optional[Dict[str, Any]] = None
     ):
         # Initialize settings first
-        self.settings = self._initialize_settings(custom_settings) # Einstellungen initialisieren
-        self.logger = self._setup_logging() # Logging initialisieren
+        self.settings = self._initialize_settings(custom_settings)
+        self.logger = self._setup_logging()
         
         # API key setup for GenAI
-        self.api_key = api_key or os.getenv("GEMINI_API_KEY") # API-Schlüssel
-        if self.settings.model_type == ModelType.GENAI and not self.api_key: # Wenn GenAI verwendet wird und kein API-Schlüssel vorhanden ist
+        self.api_key = api_key or os.getenv("GEMINI_API_KEY")
+        if self.settings.model_type == ModelType.GENAI and not self.api_key:
             raise ValueError(
                 "API Schlüssel nicht gefunden. Bitte stellen Sie sicher, dass der API-Schlüssel bereitgestellt wird, "
                 "entweder über einen Parameter oder die Umgebungsvariable 'GEMINI_API_KEY'."
             )
         
-        # Configure GenAI if GenAI is used
-        if self.settings.model_type == ModelType.GENAI: # Wenn GenAI verwendet wird
-            genai.configure(api_key=self.api_key) # GenAI konfigurieren
+        # Configure GenAI if needed
+        if self.settings.model_type == ModelType.GENAI:
+            genai.configure(api_key=self.api_key)
         
         # Resources setup
-        self.resources_path = resources_path or Path(__file__).parent.parent / 'resources' # Pfad zu den Ressourcen ist das Verzeichnis 'resources' im übergeordneten Verzeichnis
-        self._verify_resource_structure() # Ressourcenstruktur überprüfen
+        if resources_path:
+            self.resources_path = resources_path
+        else:
+            # Get the path to the module's root directory
+            module_root = Path(__file__).parent.parent
+            self.resources_path = module_root / 'resources'
+            self.prompts_path = self.resources_path / 'prompts'
+        
+        # Verify resources exist
+        self._verify_resource_structure()
         
         # Initialize hexagram manager
-        self.hexagram_manager = HexagramManager(self.resources_path) # Hexagramm-Manager initialisieren
+        self.hexagram_manager = HexagramManager(self.resources_path)
         
-        # Set up GenAI or Ollama
+        # Set up model based on settings
         try:
             if self.settings.model_type == ModelType.GENAI:
                 self.model = genai.GenerativeModel(
@@ -104,7 +112,7 @@ class YijingOracle:
                 if self.settings.consultation_mode == ConsultationMode.DIALOGUE:
                     self.chat_session = self.model.start_chat()
             elif self.settings.model_type == ModelType.OLLAMA:
-                # Keine spezifische Initialisierung für Ollama erforderlich
+                # No specific initialization needed for Ollama
                 pass
             else:
                 raise ValueError(f"Unbekannter Modelltyp: {self.settings.model_type}")
@@ -112,13 +120,34 @@ class YijingOracle:
         except Exception as e:
             self.logger.error("Fehler bei der Initialisierung", exc_info=True)
             raise RuntimeError(f"Oracle-Initialisierungsfehler: {str(e)}")
-        
-    def _initialize_settings(self, custom_settings: Optional[Dict[str, Any]] = None) -> Settings:
-        """Initialize settings with either custom values or defaults."""
-        if custom_settings:
-            return Settings(**custom_settings)
-        return settings
 
+    def _verify_resource_structure(self) -> None:
+        """
+        Verify that all required resource files exist in the prompts directory.
+        
+        This method checks for the existence of essential template files used by the oracle.
+        The files should be located in the prompts subdirectory of the resources directory.
+        
+        Raises:
+            FileNotFoundError: If any required template file is missing
+        """
+        required_files = [
+            'consultation_template.txt',
+            'system_prompt.txt'
+        ]
+        
+        # Get the prompts directory path
+        prompts_path = self.resources_path / 'prompts'
+        
+        # Check each required file
+        for file in required_files:
+            file_path = prompts_path / file
+            if not file_path.exists():
+                raise FileNotFoundError(
+                    f"Required template file not found: {file_path}\n"
+                    f"Please ensure all template files are in the prompts directory."
+                )
+            
     def _ensure_resource_structure(self) -> None:
         """Create required resource directories if they don't exist."""
         directories = [
@@ -129,48 +158,36 @@ class YijingOracle:
         
         for directory in directories:
             directory.mkdir(parents=True, exist_ok=True)
-            self.logger.debug(f"Ensured directory exists: {directory}")
-            
-    def _verify_resource_structure(self) -> None:
-        """Verify that all required resource files exist."""
-        required_files = [
-            'consultation_template.txt',
-            'system_prompt.txt'
-        ]
-        
-        for file in required_files:
-            file_path = self.resources_path / file or self.resources_path / 'prompts' / file
-            if not file_path.exists():
-                raise FileNotFoundError(
-                    f"Required resource file not found: {file_path}"
-                )
-            
+            self.logger.debug(f"Ensured directory exists: {directory}") 
 
     def _get_system_prompt(self) -> str:
         """
-        Lädt und kombiniert die Prompt-Templates.
-
+        Load and combine the prompt templates for the oracle's system prompt.
+        
+        This method loads the base system prompt, consultation template, and 
+        mode-specific template from the prompts directory and combines them 
+        into a complete system prompt.
+        
         Returns:
-            str: Der kombinierte System-Prompt.
+            str: The combined system prompt text
             
         Raises:
-            FileNotFoundError: Wenn ein Template nicht gefunden wird.
+            FileNotFoundError: If any required template file is missing
         """
         try:
-            # Lade die Basis-Templates
-            system_template = self.settings.load_prompt_template('system_prompt')
-            consultation_template = self.settings.load_prompt_template('consultation_template')
+            # Get the prompts directory path
+            prompts_path = self.resources_path / 'prompts'
             
-            # Lade das mode-spezifische Template
-            mode_template = self.settings.load_prompt_template(
-                f"{self.settings.consultation_mode.value}_mode_prompt"
-            )
+            # Load each template from the prompts directory
+            system_template = (prompts_path / 'system_prompt.txt').read_text(encoding='utf-8')
+            consultation_template = (prompts_path / 'consultation_template.txt').read_text(encoding='utf-8')
+            mode_template = (prompts_path / f"{self.settings.consultation_mode.value}_mode_prompt.txt").read_text(encoding='utf-8')
             
-            # Kombiniere die Templates
+            # Combine the templates
             return f"{system_template}\n\n{mode_template}\n\n{consultation_template}"
                     
         except Exception as e:
-            self.logger.error(f"Fehler beim Laden der Prompt-Templates: {str(e)}")
+            self.logger.error(f"Error loading prompt templates: {str(e)}")
             raise
         
     def _setup_logging(self) -> logging.Logger:
@@ -446,11 +463,6 @@ class YijingOracle:
                 response=str(e)
             )
 
-    # ENTFERNEN: Diese Prüfung in __init__
-    if self.settings.model_type == ModelType.OLLAMA:
-        if not self.settings.OLLAMA_HOST:  # Diese Prüfung entfernen
-            raise ConfigurationError("Ollama-Host nicht konfiguriert")
-            
 def ask_oracle(question: str, api_key: str = os.getenv("GENAI_API_KEY")) -> Dict[str, Any]:
     """
     Convenience function to get oracle response.

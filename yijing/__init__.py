@@ -14,7 +14,8 @@ from .enums import (
     LineType,
     HexagramComponent,
     ResourceType,
-    LogLevel
+    LogLevel,
+    ModelType,
 )
 
 # Import models
@@ -65,6 +66,7 @@ __all__ = [
     'HexagramComponent',
     'ResourceType',
     'LogLevel',
+    'ModelType',  # ModelType hinzugefügt
     
     # Configuration
     'Settings',
