@@ -19,7 +19,7 @@ from .generator import cast_hypergram
 from .manager import HexagramManager
 from ..enums import ConsultationMode
 from ..config import Settings, settings, ModelType
-from ..utils.resource_loader import load_yijing_text, load_system_prompt
+from ..utils.resource_loader import load_system_prompt  # Nur load_system_prompt wird benötigt
 
 import json
 #from typing import Dict, Any, Optional

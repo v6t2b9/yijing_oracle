@@ -29,3 +29,10 @@ class HexagramContext:
             for i in self.changing_lines
             if 0 <= i-1 < len(self.original_hexagram['lines'])
         ]
+
+class HypergramData(BaseModel):
+    """Contains the complete data for a hypergram reading including transformations."""
+    hypergram: Hypergram
+    old_hexagram: Hexagram
+    new_hexagram: Hexagram
+    changing_lines: List[int]
