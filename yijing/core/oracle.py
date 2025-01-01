@@ -121,6 +121,37 @@ class YijingOracle:
             self.logger.error("Fehler bei der Initialisierung", exc_info=True)
             raise RuntimeError(f"Oracle-Initialisierungsfehler: {str(e)}")
 
+    def _initialize_settings(self, custom_settings: Optional[Dict[str, Any]] = None) -> Settings:
+        """
+        Initialize oracle settings by combining default settings with custom overrides.
+        
+        Args:
+            custom_settings (Optional[Dict[str, Any]]): Custom settings to override defaults
+            
+        Returns:
+            Settings: Initialized settings object
+            
+        Raises:
+            ConfigurationError: If settings validation fails
+        """
+        try:
+            # Start with default settings
+            base_settings = Settings()
+            
+            if custom_settings:
+                # Update with custom settings
+                for key, value in custom_settings.items():
+                    if hasattr(base_settings, key):
+                        setattr(base_settings, key, value)
+                    else:
+                        self.logger.warning(f"Ignoring unknown setting: {key}")
+            
+            return base_settings
+            
+        except Exception as e:
+            raise ConfigurationError(f"Failed to initialize settings: {str(e)}")
+        
+        
     def _verify_resource_structure(self) -> None:
         """
         Verify that all required resource files exist in the prompts directory.
