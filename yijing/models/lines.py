@@ -19,28 +19,22 @@ from ..constants import (
 
 logger = logging.getLogger(__name__)
 
-class Hype    """A single line in a hypergram that can change state."""
+class HypergramLine(BaseModel):
+    """A single line in a hypergram that can change state."""
     value: Literal[6, 7, 8, 9]
     
     def is_yin(self) -> bool:
-        return self.line_type in [LineType.CHANGING_YIN, LineType.STABLE_YIN]
-
+        return self.value in (6, 8)  # Vereinfachte Logik
+        
     def is_yang(self) -> bool:
-        return self.line_type in [LineType.CHANGING_YANG, LineType.STABLE_YANG]
-
+        return self.value in (7, 9)  # Vereinfachte Logik
+        
     def is_changing(self) -> bool:
-        return self.line_type in [LineType.CHANGING_YIN, LineType.CHANGING_YANG]
-
-    def transforms_to(self) -> Optional[Literal[0, 1]]:
-        transforms = {
-            LineType.CHANGING_YIN: 1,  # Changes to Yang
-            LineType.CHANGING_YANG: 0  # Changes to Yin
-        }
-        return transforms.get(self.line_type)
-
-    def to_unicode_symbol(self) -> str:
-        return YANG_SYMBOL if self.is_yang() else YIN_SYMBOL
-
+        return self.value in (6, 9)  # Vereinfachte Logik
+        
+    def transforms_to(self) -> Literal[0, 1]:
+        return 1 if self.value == 6 else 0 if self.value == 9 else None
+    
 class HexagramLine(BaseModel):
     """A single fixed line in a hexagram."""
     value: Literal[0, 1] = Field(

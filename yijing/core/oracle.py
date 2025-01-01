@@ -174,16 +174,17 @@ class YijingOracle:
             raise
         
     def _setup_logging(self) -> logging.Logger:
-        """Set up logging configuration."""
+        """Set up basic logging."""
         logger = logging.getLogger(__name__)
         if not logger.handlers:
             handler = logging.StreamHandler()
-            formatter = logging.Formatter(
-                '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-            )
-            handler.setFormatter(formatter)
+            handler.setFormatter(logging.Formatter(
+                '%(asctime)s - %(levelname)s - %(message)s'
+            ))
             logger.addHandler(handler)
-            logger.setLevel(logging.DEBUG if self.settings.debug else logging.INFO)
+            logger.setLevel(
+                logging.DEBUG if self.settings.debug else logging.INFO
+            )
         return logger
 
     def get_response(self, question: str) -> Dict[str, Any]:
@@ -416,81 +417,7 @@ class YijingOracle:
                 model_name=self.settings.active_model,
                 response=str(e)
             )
-
-    async def _get_model_response_async(self, prompt: str) -> str:
-        """
-        Holt asynchron eine Antwort vom GenAI-Modell.
-        
-        Diese Methode implementiert eine robuste Fehlerbehandlung und 
-        Wiederholungslogik für die Kommunikation mit dem GenAI-Modell. Sie
-        berücksichtigt verschiedene Fehlerfälle wie Netzwerkprobleme oder
-        Zeitüberschreitungen und versucht, diese angemessen zu behandeln.
-        
-        Args:
-            prompt (str): Der zu verarbeitende Prompt
-            
-        Returns:
-            str: Die generierte Antwort des Modells
-            
-        Raises:
-            ModelConnectionError: Bei Verbindungsproblemen mit dem Modell
-            ModelResponseError: Bei ungültigen oder fehlenden Antworten
-            ConfigurationError: Bei Konfigurationsproblemen
-        """
-        # Überprüfe Modellkonfiguration
-        if not self.model:
-            raise ConfigurationError("GenAI-Modell nicht initialisiert")
-            
-        max_retries = 3
-        retry_delay = 1.0  # Startverzögerung in Sekunden
-        
-        for attempt in range(max_retries):
-            try:
-                async with AsyncExitStack() as stack:
-                    await stack.enter_async_context(asyncio.wait_for(
-                        self._execute_model_request(prompt),
-                        timeout=30
-                    ))  # 30 Sekunden Timeout
-                    
-                    if self.settings.consultation_mode == ConsultationMode.DIALOGUE:
-                        if not self.chat_session:
-                            self.chat_session = await self.model.start_chat_async()
-                        response = await self.chat_session.send_message_async(prompt)
-                    else:
-                        response = await self.model.generate_content_async(prompt)
-                    
-                    # Validiere die Antwort
-                    if not response or not hasattr(response, 'text'):
-                        raise ModelResponseError(
-                            model_name=self.settings.active_model,
-                            response="Keine gültige Antwort erhalten"
-                        )
-                    
-                    return response.text
-                    
-            except asyncio.TimeoutError:
-                self.logger.warning(
-                    f"Zeitüberschreitung bei Versuch {attempt + 1}/{max_retries}"
-                )
-                if attempt == max_retries - 1:
-                    raise ModelConnectionError(
-                        model_name=self.settings.active_model,
-                        details="Wiederholte Zeitüberschreitungen"
-                    )
-                    
-            except ConnectionError as e:
-                self.logger.warning(
-                    f"Verbindungsfehler bei Versuch {attempt + 1}/{max_retries}: {e}"
-                )
-                if attempt == max_retries - 1:
-                    raise ModelConnectionError(
-                        model_name=self.settings.active_model,
-                        details=str(e)
-                    )
-                    
-            # Exponentielles Backoff für Wiederholungsversuche
-            await asyncio.sleep(retry_delay * (2 ** attempt))
-    
+   
     def _get_ollama_response(self, prompt: str) -> str:
         """Kommuniziert mit Ollama."""
         try:
@@ -524,212 +451,6 @@ class YijingOracle:
         if not self.settings.OLLAMA_HOST:  # Diese Prüfung entfernen
             raise ConfigurationError("Ollama-Host nicht konfiguriert")
             
-    async def _handle_chat_session_async(self) -> None:
-        """
-        Verwaltet die Chat-Session asynchron.
-        
-        Diese Methode kümmert sich um die Initialisierung und Verwaltung
-        der Chat-Session im Dialogue-Modus. Sie stellt sicher, dass die
-        Session korrekt initialisiert und bei Bedarf erneuert wird.
-        
-        Raises:
-            ModelConnectionError: Bei Problemen mit der Session-Initialisierung
-            ConfigurationError: Bei ungültiger Konfiguration
-        """
-        if self.settings.consultation_mode != ConsultationMode.DIALOGUE:
-            return
-            
-        try:
-            if self.settings.model_type == ModelType.GENAI:
-                if not self.chat_session:
-                    self.chat_session = await self.model.start_chat_async()
-            else:
-                # Ollama benötigt keine permanente Chat-Session
-                pass
-                
-        except Exception as e:
-            raise ModelConnectionError(
-                model_name=self.settings.active_model,
-                details=f"Chat-Session-Initialisierung fehlgeschlagen: {str(e)}"
-            )
-        
-    async def get_response_async(self, question: str) -> Dict[str, Any]:
-        """
-        Asynchrone Version der Weissagungs-Generierung.
-        
-        Diese Methode nutzt asynchrone Operationen, um die Antwortzeit zu verbessern,
-        besonders bei der Interaktion mit den KI-Modellen. Sie implementiert die gleiche
-        Fehlerbehandlung wie die synchrone Version, ist aber für asynchrone Ausführung
-        optimiert.
-        
-        Args:
-            question (str): Die Frage an das Orakel
-            
-        Returns:
-            Dict[str, Any]: Ein Dictionary mit der Weissagung und zusätzlichen Informationen
-            
-        Raises:
-            ModelConnectionError: Wenn keine Verbindung zum KI-Modell hergestellt werden kann
-            ModelResponseError: Wenn die Antwort des Modells ungültig ist
-            ResourceNotFoundError: Wenn erforderliche Ressourcen nicht gefunden werden
-            HexagramTransformationError: Wenn bei der Hexagramm-Transformation ein Fehler auftritt
-            ConfigurationError: Wenn die Konfiguration ungültig ist
-        """
-        try:
-            self.logger.info(
-                f"Starte asynchrone Verarbeitung im {self.settings.consultation_mode} "
-                f"Modus mit Modell {self.settings.model_type.value}"
-            )
-            
-            # Validiere die Konfiguration - kann synchron bleiben, da keine I/O-Operation
-            self._validate_configuration()
-            
-            # Führe asynchrone Operationen parallel aus wo möglich
-            try:
-                # Erstelle Tasks für unabhängige Operationen
-                hypergram_task = asyncio.create_task(self._cast_hypergram_async())
-                
-                # Warte auf das Ergebnis der Hexagramm-Generierung
-                hypergram_data = await hypergram_task
-                
-            except ValueError as e:
-                raise HexagramTransformationError(
-                    error_detail=f"Async Hexagramm-Generierung fehlgeschlagen: {str(e)}"
-                ) from e
-            
-            # Erstelle Hexagrammkontext - kann parallel zur Modellvorbereitung laufen
-            try:
-                context_task = asyncio.create_task(
-                    self._create_hexagram_context_async(hypergram_data)
-                )
-                context = await context_task
-                
-            except FileNotFoundError as e:
-                raise ResourceNotFoundError(
-                    resource_path=str(e)
-                ) from e
-            
-            # Generiere Prompt und hole Modellantwort
-            try:
-                # Erstelle den Prompt
-                prompt = await self._generate_prompt_async(context, question)
-                
-                # Hole die Modellantwort basierend auf dem Modelltyp
-                if self.settings.model_type == ModelType.GENAI:
-                    response_text = await self._get_model_response_async(prompt)
-                else:
-                    response_text = await self._get_ollama_response_async(prompt)
-                    
-            except asyncio.TimeoutError as e:
-                raise ModelConnectionError(
-                    model_name=self.settings.active_model,
-                    details="Zeitüberschreitung bei der Modellanfrage"
-                ) from e
-            except ConnectionError as e:
-                raise ModelConnectionError(
-                    model_name=self.settings.active_model,
-                    details=str(e)
-                ) from e
-            except Exception as e:
-                raise ModelResponseError(
-                    model_name=self.settings.active_model,
-                    response=str(e)
-                ) from e
-            
-            # Erstelle und validiere die Antwort
-            response = {
-                'answer': response_text,
-                'hypergram_data': hypergram_data.dict(),
-                'hexagram_context': {
-                    'original': context.original_hexagram['hexagram']['name'],
-                    'resulting': context.resulting_hexagram['hexagram']['name'],
-                    'changing_lines': context.changing_lines
-                },
-                'model_used': self.settings.active_model,
-                'timestamp': datetime.now().isoformat(),
-                'consultation_mode': self.settings.consultation_mode
-            }
-            
-            # Validierung kann synchron bleiben
-            self._validate_response(response)
-            return response
-            
-        except Exception as e:
-            self.logger.error(
-                "Unerwarteter Fehler bei der asynchronen Generierung der Antwort",
-                exc_info=True
-            )
-            raise
-
-    async def _cast_hypergram_async(self):
-        """
-        Asynchrone Version der Hexagramm-Generierung.
-        """
-        # Da die Hexagramm-Generierung CPU-bound ist, nutzen wir einen ThreadPool
-        return await asyncio.to_thread(cast_hypergram)
-
-    async def _create_hexagram_context_async(self, hypergram_data):
-        """
-        Asynchrone Version der Kontext-Erstellung.
-        """
-        # Da dies hauptsächlich I/O-Operationen sind, können wir es asynchron machen
-        original_number = hypergram_data.old_hexagram.to_binary_number() + 1
-        resulting_number = hypergram_data.new_hexagram.to_binary_number() + 1
-        
-        # Lade Hexagramm-Daten parallel
-        orig_data_task = asyncio.create_task(
-            self._load_hexagram_data_async(original_number)
-        )
-        res_data_task = asyncio.create_task(
-            self._load_hexagram_data_async(resulting_number)
-        )
-        
-        # Warte auf beide Ergebnisse
-        original_data, resulting_data = await asyncio.gather(
-            orig_data_task, res_data_task
-        )
-        
-        return HexagramContext(
-            original_hexagram=original_data,
-            changing_lines=[i + 1 for i in hypergram_data.changing_lines],
-            resulting_hexagram=resulting_data
-        )
-
-    async def _generate_prompt_async(self, context, question: str) -> str:
-        """
-        Asynchrone Prompt-Generierung.
-        """
-        # Die Prompt-Generierung ist CPU-bound, daher nutzen wir einen ThreadPool
-        return await asyncio.to_thread(
-            self.hexagram_manager.get_consultation_prompt,
-            context=context,
-            question=question
-        )
-
-    async def _load_hexagram_data_async(self, number: int):
-        """
-        Asynchrone Version des Hexagramm-Daten-Ladens.
-        """
-        try:
-            # Datei-I/O sollte asynchron sein
-            resources_dir = self.resources_path / 'hexagram_json'
-            prompt_dir = self.resources_path / 'prompts'
-            hexagram_file = resources_dir / f'hexagram_{number:02d}.json'
-            
-            async with aiofiles.open(hexagram_file, mode='r', encoding='utf-8') as f:
-                content = await f.read()
-                return json.loads(content)
-                
-        except FileNotFoundError as e:
-            raise ResourceNotFoundError(
-                resource_path=str(hexagram_file)
-            ) from e
-        except json.JSONDecodeError as e:
-            raise ResourceValidationError(
-                resource_path=str(hexagram_file),
-                validation_errors=[f"Ungültiges JSON: {str(e)}"]
-            )
-
 def ask_oracle(question: str, api_key: str = os.getenv("GENAI_API_KEY")) -> Dict[str, Any]:
     """
     Convenience function to get oracle response.
